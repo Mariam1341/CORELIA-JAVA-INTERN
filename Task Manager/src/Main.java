@@ -1,7 +1,5 @@
 import java.util.List;
 import java.util.Scanner;
-import java.util.List;
-import java.util.Scanner;
 
 public class Main {
     static Scanner scanner = new Scanner(System.in);
@@ -12,27 +10,42 @@ public class Main {
         manager.addTask("Task 2");
 
         mainMenu();
+
     }
 
     private static void mainMenu() {
         while (true) {
-            System.out.println("\n===== Task Manager =====");
-            System.out.println("1- Add new task");
-            System.out.println("2- Show all tasks");
-            System.out.println("3- Show tasks by status");
-            System.out.println("4- Edit task");
-            System.out.println("5- Delete task");
-            System.out.println("0- Exit");
+            System.out.println("\n===== Task Manager =====\n" +
+                    "1- Add new task\n" +
+                    "2- Show all tasks\n" +
+                    "3- Show tasks by status\n" +
+                    "4- Edit task\n" +
+                    "5- Delete task\n" +
+                    "0- Exit\n");
 
             int choice = safeInput();
             switch (choice) {
-                case 1 -> addTaskMenu();
-                case 2 -> printTasks(manager.getTasks());
-                case 3 -> showTasksByStatus();
-                case 4 -> editTaskMenu();
-                case 5 -> deleteTaskMenu();
-                case 0 -> System.exit(0);
-                default -> System.out.println("Invalid choice, try again!");
+                case 1:
+                    addTaskMenu();
+                    break;
+                case 2:
+                    printTasks(manager.getTasks());
+                    break;
+                case 3:
+                    showTasksByStatus();
+                    break;
+                case 4:
+                    editTaskMenu();
+                    break;
+                case 5:
+                    deleteTaskMenu();
+                    break;
+                case 0:
+                    scanner.close();
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Invalid choice, try again!");
             }
         }
     }
@@ -47,15 +60,22 @@ public class Main {
     private static void showTasksByStatus() {
         System.out.println("1- TO DO\n2- DOING\n3- DONE");
         int choice = safeInput();
-        Condition status = switch (choice) {
-            case 1 -> Condition.TO_DO;
-            case 2 -> Condition.DOING;
-            case 3 -> Condition.DONE;
-            default -> {
+        Condition status = null;
+
+        switch (choice) {
+            case 1:
+                status = Condition.TO_DO;
+                break;
+            case 2:
+                status = Condition.DOING;
+                break;
+            case 3:
+                status = Condition.DONE;
+                break;
+            default:
                 System.out.println("Invalid choice");
-                yield null;
-            }
-        };
+        }
+
         if (status != null)
             printTasks(manager.getTasksByStatus(status));
     }
@@ -74,10 +94,21 @@ public class Main {
 
             System.out.println("Change status? 1-TO DO  2-DOING  3-DONE  0-Skip");
             int statusChoice = safeInput();
+
             switch (statusChoice) {
-                case 1 -> task.setStatus(Condition.TO_DO);
-                case 2 -> task.setStatus(Condition.DOING);
-                case 3 -> task.setStatus(Condition.DONE);
+                case 1:
+                    task.setStatus(Condition.TO_DO);
+                    break;
+                case 2:
+                    task.setStatus(Condition.DOING);
+                    break;
+                case 3:
+                    task.setStatus(Condition.DONE);
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.out.println("Invalid choice");
             }
         }
     }
@@ -102,7 +133,7 @@ public class Main {
 
     private static int safeInput() {
         while (!scanner.hasNextInt()) {
-            System.out.print("Invalid input, enter a number: ");
+            System.out.print("Invalid input :( , enter a number ");
             scanner.next();
         }
         return scanner.nextInt();
