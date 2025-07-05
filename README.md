@@ -6,7 +6,23 @@ The repository will be continuously updated as I progress through the internship
 
 ---
 
-## 📦 Current Project: Week 1 - Task Manager Console Application
+## 📅 **Internship Roadmap**
+
+| Week | Main Topic                     | Project/Task                                   |
+|------|---------------------------------|------------------------------------------------|
+| 1    | Java Fundamentals & OOP         | ✅ Console-based Task Manager                  |
+| 2    | Advanced Java & MySQL           | Coming Soon...                                 |
+| 3    | Spring Boot Essentials          | Coming Soon...                                 |
+| 4    | Spring Boot + JPA with MySQL    | Coming Soon...                                 |
+| 5    | JSF Basics + Java Integration   | Coming Soon...                                 |
+| 6    | JSF + MySQL Integration         | Coming Soon...                                 |
+| 7    | Spring Boot + JSF + MySQL       | Coming Soon...                                 |
+| 8    | Final Project                   | Coming Soon...                                 |
+
+---
+## ✅ **Completed Projects**
+
+## 📦 Week 1 - Task Manager Console Application
 
 As part of the first week's assignment, I built a simple **Task Manager** using Java, applying core Object-Oriented Programming (OOP) concepts.
 
@@ -22,19 +38,11 @@ As part of the first week's assignment, I built a simple **Task Manager** using 
 
 - Java  
 - Console-based interaction  
-- OOP Principles (Encapsulation, Methods, Class Design)  
+- OOP Principles (Encapsulation, Methods, Class Design, Enums)  
 
+### 🎬 Demo Video
 
----
-
-## 📅 Upcoming Additions
-
-As I progress through the internship, this repository will include:
-
-- Advanced Java projects with MySQL  
-- REST APIs with Spring Boot  
-- JSF Frontend development  
-- Full-stack integrated applications  
+[Watch the Demo](videos/task-manager.mp4)
 
 ---
 
