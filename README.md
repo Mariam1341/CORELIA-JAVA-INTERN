@@ -42,7 +42,9 @@ As part of the first week's assignment, I built a simple **Task Manager** using 
 
 ### 🎬 Demo Video
 
-[Watch the Demo]([videos/task-manager.mp4](https://github.com/user-attachments/assets/11717a8e-9ee7-4875-8bfe-a5bb43cbd763))
+
+
+https://github.com/user-attachments/assets/7253451c-5da0-4561-9955-e80489bfc1a2
 
 ---
 
