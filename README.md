@@ -63,7 +63,6 @@ This project is a **console-based Pet Clinic Management System** that performs f
 - Database connectivity  
 - Clean separation between DAO and models  
 
-> 📝 **Note**: CSV export and in-memory sorting were intentionally removed to focus on database-first operations.
 
 ---
 
@@ -72,10 +71,10 @@ This project is a **console-based Pet Clinic Management System** that performs f
 You can find short demo clips for each project in the `demo/` folder or linked below:
 
 - 📽️ Task Manager Console App  
-  https://github.com/user-attachments/assets/7253451c-5da0-4561-9955-e80489bfc1a2
+  (https://github.com/user-attachments/assets/7253451c-5da0-4561-9955-e80489bfc1a2)
 
 - 🐾 Pet Clinic Console App
-  https://github.com/user-attachments/assets/e0c45077-9b2a-4a0e-85a6-47572d96b387
+  (https://github.com/user-attachments/assets/e0c45077-9b2a-4a0e-85a6-47572d96b387)
 
 ---
 
