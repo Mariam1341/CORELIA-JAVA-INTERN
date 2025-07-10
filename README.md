@@ -73,7 +73,7 @@ You can find short demo clips for each project in the `demo/` folder or linked b
 - 📽️ Task Manager Console App  
   (https://github.com/user-attachments/assets/7253451c-5da0-4561-9955-e80489bfc1a2)
 
-- 🐾 Pet Clinic Console App
+- 🐾 Pet Clinic Console App   
   (https://github.com/user-attachments/assets/e0c45077-9b2a-4a0e-85a6-47572d96b387)
 
 ---
