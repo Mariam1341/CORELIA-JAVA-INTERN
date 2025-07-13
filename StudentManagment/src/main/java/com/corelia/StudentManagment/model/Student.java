@@ -1,7 +1,7 @@
 package com.corelia.StudentManagment.model;
 
 public class Student {
-    private int id;
+    private Long id;
     private String name;
     private String email;
     private int age;
@@ -9,7 +9,7 @@ public class Student {
     public Student() {
     }
 
-    public Student(int id, String name, String email, int age) {
+    public Student(Long id, String name, String email, int age) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -22,11 +22,11 @@ public class Student {
         this.age = age;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

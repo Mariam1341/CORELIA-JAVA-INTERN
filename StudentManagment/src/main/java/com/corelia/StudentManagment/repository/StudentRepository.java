@@ -1,7 +1,14 @@
 package com.corelia.StudentManagment.repository;
 
-import org.springframework.jdbc.core.JdbcTemplate;
+import com.corelia.StudentManagment.model.Student;
 
-public class StudentRepository extends JdbcTemplate {
-    public void add
+import java.util.List;
+
+public interface StudentRepository {
+    int count();
+    Student findById(Long id);
+    List<Student> getAllStudents();
+    int insert(Student student);
+    int update (Student student);
+    int delete(Long id);
 }
