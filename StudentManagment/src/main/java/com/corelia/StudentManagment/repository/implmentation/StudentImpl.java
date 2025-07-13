@@ -29,8 +29,8 @@ public class StudentImpl implements StudentRepository {
                 new Object[] {student.getName(), student.getEmail(), student.getAge()});
     }
     public int update (Student student){
-        return jdbcTemplate.update("UPDATE students SET name = ? email = ? age = ?",
-                new Object[] {student.getName(), student.getEmail(), student.getAge()});
+        return jdbcTemplate.update("UPDATE students SET name = ?, email = ?, age = ? WHERE id = ?",
+                new Object[] {student.getName(), student.getEmail(), student.getAge(), student.getId()});
     }
     public int delete(Long id){
         return jdbcTemplate.update("DELETE FROM students WHERE id = ?",

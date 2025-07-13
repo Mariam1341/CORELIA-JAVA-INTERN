@@ -17,12 +17,7 @@ public class StartUpProject implements CommandLineRunner {
     private StudentRepository studentRepository;
     @Override
     public void run(String... args) throws Exception {
-        jdbcTemplate.execute("CREATE DATABASE IF NOT EXISTS student_db;");
-        jdbcTemplate.execute(" CREATE TABLE students ( " +
-                "id INT AUTO_INCREMENT PRIMARY KEY," +
-                "name VARCHAR(100) NOT NULL," +
-                "email VARCHAR(100) UNIQUE NOT NULL," +
-                "age INT NOT NULL)");
+
         if(studentRepository.count() == 0){
             studentRepository.insert(new Student("Mohammed", "mohammed@gmail.com", 20));
             studentRepository.insert(new Student("Salma", "salma@gmail.com", 28));
