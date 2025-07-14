@@ -1,6 +1,5 @@
 package com.corelia.StudentManagment.controller;
 
-import com.corelia.StudentManagment.dto.StudentDTO;
 import com.corelia.StudentManagment.model.Student;
 import com.corelia.StudentManagment.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
