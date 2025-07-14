@@ -1,6 +1,6 @@
 package com.corelia.StudentManagment.service;
 
-import com.corelia.StudentManagment.dto.StudentDTO;
+
 import com.corelia.StudentManagment.model.Student;
 import com.corelia.StudentManagment.repository.StudentRepository;
 import com.corelia.StudentManagment.repository.implmentation.StudentImpl;
