@@ -12,12 +12,12 @@ The repository will be continuously updated as I progress through the internship
 |------|--------------------------------|-------------------------------------------------------|
 | 1    | Java Fundamentals & OOP        | ✅ Console-based Task Manager                         |
 | 2    | Advanced Java & MySQL          | ✅ Pet Clinic Management System                       |
-| 3    | Spring Boot Essentials         | Coming Soon...                                       |
+| 3    | Spring Boot Essentials         | ✅ Student Management API (Spring Boot + MySQL)       |
 | 4    | Spring Boot + JPA with MySQL   | Coming Soon...                                       |
 | 5    | JSF Basics + Java Integration  | Coming Soon...                                       |
 | 6    | JSF + MySQL Integration        | Coming Soon...                                       |
 | 7    | Spring Boot + JSF + MySQL      | Coming Soon...                                       |
-| 8    | Final Project                  | Coming Soon...                                       |
+| 8    | Final Project                   | Coming Soon...                                       |
 
 ---
 
@@ -63,6 +63,29 @@ This project is a **console-based Pet Clinic Management System** that performs f
 - Database connectivity  
 - Clean separation between DAO and models  
 
+---
+
+### 📚 Week 3 - Student Management API
+
+This project is a **basic RESTful Student Management System**, developed using **Spring Boot** and **MySQL**.
+
+#### ✅ Features:
+- Create a new student  
+- View all students  
+- View student by ID  
+- Update student information  
+- Delete student  
+
+#### 🛠️ Technologies:
+- Java  
+- Spring Boot  
+- Spring Web  
+- Spring JDBC  
+- MySQL  
+- RESTful API (GET, POST, PUT, DELETE)  
+- Layered architecture (Controller, Service, Repository)
+
+> ⚠️ **Note**: This version is kept simple and does **not** include DTOs, validation, or custom exception handling — the focus is on mastering core Spring Boot concepts first.
 
 ---
 
@@ -70,11 +93,15 @@ This project is a **console-based Pet Clinic Management System** that performs f
 
 You can find short demo clips for each project in the `demo/` folder or linked below:
 
-- 📽️ Task Manager Console App  
-  https://github.com/user-attachments/assets/7253451c-5da0-4561-9955-e80489bfc1a2
+###📽️ Task Manager Console App  
+  [![Task Manager Demo](https://img.youtube.com/vi/stTNWfBljO0/hqdefault.jpg)](https://youtu.be/stTNWfBljO0)
 
-- 🐾 Pet Clinic Console App   
-  https://github.com/user-attachments/assets/e0c45077-9b2a-4a0e-85a6-47572d96b387
+### 🐾 Pet Clinic Console App   
+ [![Pet Clinic Demo](https://img.youtube.com/vi/RQNuUSZU1zU/hqdefault.jpg)](https://youtu.be/RQNuUSZU1zU)
+
+### 📚 Student Management API
+[![Student Managment Demo](https://img.youtube.com/vi/8E-93JOPBLI/hqdefault.jpg)](https://youtu.be/8E-93JOPBLI)
+
 
 ---
 
@@ -83,6 +110,7 @@ You can find short demo clips for each project in the `demo/` folder or linked b
 I'm currently interning at **CORELIA** in the Java Internship Program. I'm passionate about building solid Java backends, writing clean code, and exploring real-world applications using modern tools and design principles.
 
 ---
+
 
 > ✨ Stay tuned — more projects and technologies are coming every week!
 
