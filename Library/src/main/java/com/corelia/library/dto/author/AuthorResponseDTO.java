@@ -2,6 +2,8 @@ package com.corelia.library.dto.author;
 
 import com.corelia.library.entity.Book;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Email;
 import lombok.*;
 
 import java.util.List;
