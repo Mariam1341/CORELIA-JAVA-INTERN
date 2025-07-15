@@ -10,5 +10,5 @@ public class BookResponseDTO {
     private Long id;
     private String title;
     private String category;
-    private String autherName;
+    private String authorName;
 }

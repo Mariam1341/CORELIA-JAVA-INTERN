@@ -3,22 +3,20 @@ package com.corelia.library.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
-
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
 @Getter
-public class Author {
+public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NonNull
-    @Column(unique = true)
-    private String name;
-    private String email;
-    @OneToMany(mappedBy = "author")
-    private List<Book> books;
+
+    private String title;
+    private String category;
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private Author author;
 }
