@@ -20,7 +20,9 @@ As part of the first week's assignment, I built a simple **Task Manager** using 
 
 ## 🎬 Demo Video
 
-###📽️ Task Manager Console App  
+
+📽️ Task Manager Console App  
+
   [![Task Manager Demo](https://img.youtube.com/vi/stTNWfBljO0/hqdefault.jpg)](https://youtu.be/stTNWfBljO0)
 
 
