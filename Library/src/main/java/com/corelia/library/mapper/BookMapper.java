@@ -6,23 +6,18 @@ import com.corelia.library.entity.Author;
 import com.corelia.library.entity.Book;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.factory.Mappers;
+import org.mapstruct.Named;
 
 @Mapper(componentModel = "spring")
 public interface BookMapper {
 
-    BookMapper instance = Mappers.getMapper(BookMapper.class);
+    @Mapping(source = "author", target = "authorName", qualifiedByName = "mapAuthorName")
+    BookResponseDTO toDto(Book book);
+
     Book toEntity(BookRequestDTO dto);
 
-    @Mapping(source = "author.getName()" ,target = "authorName")
-    default BookResponseDTO toDto(Book book) {
-        if (book == null) return null;
-        return BookResponseDTO.builder()
-                .id(book.getId())
-                .title(book.getTitle())
-                .category(book.getCategory())
-                .authorName(book.getAuthor() != null ? book.getAuthor().getName() : null)
-                .build();
+    @Named("mapAuthorName")
+    default String mapAuthorName(Author author) {
+        return author != null ? author.getName() : null;
     }
-
 }

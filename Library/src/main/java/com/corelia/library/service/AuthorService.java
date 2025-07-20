@@ -13,8 +13,10 @@ import com.corelia.library.exception.custom.BookNotFoundException;
 import com.corelia.library.mapper.AuthorMapper;
 import com.corelia.library.mapper.BookMapper;
 import com.corelia.library.repository.AuthorRepository;
+import com.corelia.library.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,7 +26,11 @@ import java.util.List;
 public class AuthorService {
 
     private final AuthorRepository authorRepository;
+    private final BookRepository bookRepository;
+
     private final BookMapper bookMapper;
+    private final BookService bookService;
+
     private final AuthorMapper authorMapper;
 
     public AuthorResponseDTO addAuthor(AuthorRequestDTO dto){
@@ -37,7 +43,7 @@ public class AuthorService {
 
         author.setEmail(dto.getEmail());
         author.setName(dto.getName());
-        author.setBooks(dto.getBooks());
+        author.setBooks(dto.getBooks().stream().map(title -> bookRepository.findByTitle(title).orElseThrow()).toList());
 
         return authorMapper.toDto(authorRepository.save(author));
     }
@@ -53,8 +59,13 @@ public class AuthorService {
         return authorMapper.toDto(authorRepository.findByName(name)
                 .orElseThrow(()-> new AuthorNotFoundException("Author not found with this id:" + name)));
     }
-    public List<AuthorResponseDTO> getAllAuthors(){
-        return authorRepository.findAll().stream().map(author -> authorMapper.toDto(author)).toList();
+//    public List<AuthorResponseDTO> getAllAuthors(){
+//        return authorRepository.findAll().stream().map(author -> authorMapper.toDto(author)).toList();
+//
+//    }
+    public List<Author> getAllAuthors(){
+        return authorRepository.findAll();
+
     }
 
 //    public List<BookResponseDTO> getAuthorBooks(String name){

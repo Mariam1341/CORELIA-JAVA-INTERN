@@ -3,6 +3,7 @@ package com.corelia.library.controller;
 import com.corelia.library.dto.ResponseDTO;
 import com.corelia.library.dto.author.AuthorRequestDTO;
 import com.corelia.library.dto.author.AuthorResponseDTO;
+import com.corelia.library.entity.Author;
 import com.corelia.library.service.AuthorService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -44,16 +45,27 @@ public class AuthorController {
     }
 
     @GetMapping
-    public ResponseEntity<ResponseDTO<List<AuthorResponseDTO>>> getAllAuthors() {
-        List<AuthorResponseDTO> authors = authorService.getAllAuthors();
+    public ResponseEntity<ResponseDTO<List<Author>>> getAllAuthors() {
+        List<Author> authors = authorService.getAllAuthors();
         return ResponseEntity.ok(
-                ResponseDTO.<List<AuthorResponseDTO>>builder()
+                ResponseDTO.<List<Author>>builder()
                         .status(HttpStatus.OK.value())
                         .message("All authors retrieved")
                         .data(authors)
                         .build()
         );
     }
+//    @GetMapping
+//    public ResponseEntity<ResponseDTO<List<AuthorResponseDTO>>> getAllAuthors() {
+//        List<AuthorResponseDTO> authors = authorService.getAllAuthors();
+//        return ResponseEntity.ok(
+//                ResponseDTO.<List<AuthorResponseDTO>>builder()
+//                        .status(HttpStatus.OK.value())
+//                        .message("All authors retrieved")
+//                        .data(authors)
+//                        .build()
+//        );
+//    }
 
     @PutMapping("/{id}")
     public ResponseEntity<ResponseDTO<AuthorResponseDTO>> updateAuthor(@PathVariable Long id, @RequestBody AuthorRequestDTO dto) {

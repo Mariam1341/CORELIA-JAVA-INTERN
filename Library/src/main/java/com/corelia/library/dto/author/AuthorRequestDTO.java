@@ -20,5 +20,5 @@ public class AuthorRequestDTO {
     private String name;
     @Email(message = "Email should be valid")
     private String email;
-    private List<Book> books;
+    private List<String> books;
 }

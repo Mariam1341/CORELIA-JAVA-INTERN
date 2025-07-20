@@ -1,5 +1,6 @@
 package com.corelia.library.dto.author;
 
+import com.corelia.library.dto.book.BookResponseDTO;
 import com.corelia.library.entity.Book;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.Valid;
@@ -17,5 +18,5 @@ public class AuthorResponseDTO {
     private Long id;
     private String name;
     private String email;
-    private List<Book> books;
+    private List<String> books;
 }

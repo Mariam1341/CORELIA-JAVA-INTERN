@@ -4,39 +4,48 @@ import com.corelia.library.entity.Author;
 import com.corelia.library.entity.Book;
 import com.corelia.library.repository.AuthorRepository;
 import com.corelia.library.repository.BookRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Configuration
-public class Setup {
-    @Bean
-    public CommandLineRunner loadData(AuthorRepository authorRepository, BookRepository bookRepository) {
-        return args -> {
+@Component
+public class Setup implements CommandLineRunner{
 
-            if (authorRepository.count() == 0 && bookRepository.count() == 0) {
 
-                Author author1 = new Author(null, "George Orwell", "orwell@example.com", new ArrayList<>());
-                Author author2 = new Author(null, "J.K. Rowling", "jk@example.com", new ArrayList<>());
+    @Autowired
+    private  AuthorRepository authorRepository;
+    @Autowired
+    private  BookRepository bookRepository;
 
-                authorRepository.saveAll(List.of(author1, author2));
+    @Override
+    public void run(String... args) throws Exception {
 
-                Book book1 = new Book(null, "1984", "Dystopian", author1);
-                Book book2 = new Book(null, "Animal Farm", "Political Satire", author1);
-                Book book3 = new Book(null, "Harry Potter", "Fantasy", author2);
+        if (authorRepository.count() == 0 && bookRepository.count() == 0) {
 
-                bookRepository.saveAll(List.of(book1, book2, book3));
-                author1.setBooks(List.of(book1, book2));
-                author2.setBooks(List.of(book3));
+            Author author1 = new Author(null, "George Orwell", "orwell@example.com", new ArrayList<>());
+            Author author2 = new Author(null, "J.K. Rowling", "jk@example.com", new ArrayList<>());
 
-                System.out.println("Dummy data inserted.");
-            } else {
-                System.out.println("Dummy data already exists. Skipping insertion.");
-            }
-        };
+            authorRepository.saveAll(List.of(author1, author2));
+
+            Book book1 = new Book(null, "1984", "Dystopian", author1);
+            Book book2 = new Book(null, "Animal Farm", "Political Satire", author1);
+            Book book3 = new Book(null, "Harry Potter", "Fantasy", author2);
+
+            bookRepository.saveAll(List.of(book1, book2, book3));
+            author1.setBooks(List.of(book1, book2));
+            author2.setBooks(List.of(book3));
+
+            System.out.println("Dummy data inserted.");
+        } else {
+            System.out.println("Dummy data already exists. Skipping insertion.");
+        }
+
     }
+
 
 }
