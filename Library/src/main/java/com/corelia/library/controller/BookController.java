@@ -74,7 +74,7 @@ public class BookController {
                 ResponseDTO.builder()
                         .status(HttpStatus.OK.value())
                         .message("Book deleted successfully")
-                        .data(null)
+                        .data(true)
                         .build()
         );
     }
