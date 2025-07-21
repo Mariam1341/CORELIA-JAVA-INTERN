@@ -19,4 +19,12 @@ public class AuthorResponseDTO {
     private String name;
     private String email;
     private List<String> books;
+
+    public List<String> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<String> books) {
+        this.books = books;
+    }
 }

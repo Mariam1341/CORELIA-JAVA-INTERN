@@ -1,5 +1,6 @@
 package com.corelia.library.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,6 +18,15 @@ public class Book {
     private String title;
     private String category;
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "author_id")
     private Author author;
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
 }

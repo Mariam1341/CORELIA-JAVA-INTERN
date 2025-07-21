@@ -23,7 +23,7 @@ public class BookService {
     private final AuthorRepository authorRepository;
 
     public BookResponseDTO createBook(BookRequestDTO dto){
-        Book book = bookMapper.toEntity(dto);
+        Book book = bookMapper.toEntity(dto,authorRepository);
         Author author = authorRepository.findByName(dto.getAuthorName())
                 .orElseThrow(()-> new AuthorNotFoundException("Author not found with this name: " + dto.getAuthorName()));
         book.setAuthor(author);

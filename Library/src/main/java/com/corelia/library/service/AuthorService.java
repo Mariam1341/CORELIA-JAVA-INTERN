@@ -34,7 +34,7 @@ public class AuthorService {
     private final AuthorMapper authorMapper;
 
     public AuthorResponseDTO addAuthor(AuthorRequestDTO dto){
-        Author author = authorMapper.toEntity(dto);
+        Author author = authorMapper.toEntity(dto, bookRepository);
         return authorMapper.toDto(authorRepository.save(author));
     }
     public AuthorResponseDTO updateAuthor(Long id, AuthorRequestDTO dto){
