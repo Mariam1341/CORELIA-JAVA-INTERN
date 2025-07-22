@@ -89,6 +89,36 @@ This project is a **basic RESTful Student Management System**, developed using *
 
 ---
 
+### 📚 Week 4 - Book & Author Management API (Spring Boot + JPA + DTOs)
+
+This week I built a Book and Author Management System using Spring Boot, JPA, and MapStruct. The goal was to dive deeper into entity relationships and practice mapping between entities and DTOs.
+
+### ✅ Features:
+- Add new books with associated authors
+- View all books (with author names)
+- Get book by ID
+- Update book info
+- Delete book
+- Manage authors and their books
+- DTO mapping using MapStruct
+
+### 🛠️ Technologies:
+- Java
+- Spring Boot
+- Spring Data JPA
+- MySQL
+- MapStruct
+- Lombok
+- Swagger
+
+### 🧠 Key Learnings:
+- Many-to-One & One-to-Many relationships with JPA
+- How to use DTOs to clean up responses and requests
+- Custom mapping logic using @Named in MapStruct
+- Using @ComponentModel("spring") to integrate MapStruct with Spring
+
+---
+
 ## 🎬 Demo Videos
 
 You can find short demo clips for each project in the `demo/` folder or linked below:
@@ -102,6 +132,8 @@ You can find short demo clips for each project in the `demo/` folder or linked b
 ### 📚 Student Management API
 [![Student Managment Demo](https://img.youtube.com/vi/8E-93JOPBLI/hqdefault.jpg)](https://youtu.be/8E-93JOPBLI)
 
+ ### 📚 Book & Author Management API
+[![Book & Author Management Demo](https://img.youtube.com/vi/qZj2YvZiT_E/hqdefault.jpg)](https://youtu.be/qZj2YvZiT_E)
 
 ---
 
