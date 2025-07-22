@@ -12,7 +12,7 @@ The repository will be continuously updated as I progress through the internship
 |------|--------------------------------|-------------------------------------------------------|
 | 1    | Java Fundamentals & OOP        | ✅ Console-based Task Manager                         |
 | 2    | Advanced Java & MySQL          | ✅ Pet Clinic Management System                       |
-| 3    | Spring Boot Essentials         | ✅ Student Management API (Spring Boot + MySQL)       |
+| 3    | Spring Boot Essentials         | ✅ Student Management API (Spring Boot + JDBC + MySQL)       |
 | 4    | Spring Boot + JPA with MySQL   | ✅ Library Management System (Spring Boot + JPA + MySQL) |
 | 5    | JSF Basics + Java Integration  | Coming Soon...                                       |
 | 6    | JSF + MySQL Integration        | Coming Soon...                                       |
