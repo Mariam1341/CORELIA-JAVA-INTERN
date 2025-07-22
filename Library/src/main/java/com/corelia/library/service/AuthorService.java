@@ -43,7 +43,6 @@ public class AuthorService {
 
         author.setEmail(dto.getEmail());
         author.setName(dto.getName());
-        author.setBooks(dto.getBooks().stream().map(title -> bookRepository.findByTitle(title).orElseThrow()).toList());
 
         return authorMapper.toDto(authorRepository.save(author));
     }
@@ -59,19 +58,11 @@ public class AuthorService {
         return authorMapper.toDto(authorRepository.findByName(name)
                 .orElseThrow(()-> new AuthorNotFoundException("Author not found with this id:" + name)));
     }
-//    public List<AuthorResponseDTO> getAllAuthors(){
-//        return authorRepository.findAll().stream().map(author -> authorMapper.toDto(author)).toList();
-//
-//    }
+
     public List<Author> getAllAuthors(){
         return authorRepository.findAll();
 
     }
 
-//    public List<BookResponseDTO> getAuthorBooks(String name){
-//        Author author = authorRepository.findByName(name)
-//                .orElseThrow(()-> new AuthorNotFoundException("this author is not exist"));
-//        return author.getBooks().stream().map(book -> bookMapper.toDto(book)).toList();
-//    }
 
 }

@@ -86,7 +86,7 @@ public class AuthorController {
                 ResponseDTO.builder()
                         .status(HttpStatus.OK.value())
                         .message("Author deleted successfully")
-                        .data(null)
+                        .data(true)
                         .build()
         );
     }

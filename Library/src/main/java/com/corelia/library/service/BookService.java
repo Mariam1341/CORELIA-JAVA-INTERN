@@ -27,6 +27,7 @@ public class BookService {
         Author author = authorRepository.findByName(dto.getAuthorName())
                 .orElseThrow(()-> new AuthorNotFoundException("Author not found with this name : " + dto.getAuthorName()
                 + "so add the author first"));
+        author.getBooks().add(book);
         book.setAuthor(author);
         return bookMapper.toDto(bookRepository.save(book));
     }
@@ -36,8 +37,7 @@ public class BookService {
                 .orElseThrow(() -> new BookNotFoundException("Book not found with this ID: "+ id));
         Author author = authorRepository.findByName(dto.getAuthorName())
                 .orElseThrow(()-> new AuthorNotFoundException("Author not found with this name: " + dto.getAuthorName()
-                + "you should update the author with one in our system"));
-
+                + " you should update the author with one in our system"));
         book.setAuthor(author);
         book.setCategory(dto.getCategory());
         book.setTitle(dto.getTitle());

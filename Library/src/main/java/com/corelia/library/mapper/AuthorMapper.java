@@ -6,17 +6,18 @@ import com.corelia.library.dto.book.BookResponseDTO;
 import com.corelia.library.entity.Author;
 import com.corelia.library.entity.Book;
 import com.corelia.library.repository.BookRepository;
-import org.mapstruct.Context;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Named;
+import org.mapstruct.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Mapper(componentModel = "spring", uses = BookMapper.class)
 public interface AuthorMapper {
-        @Mapping(source = "books", target = "books", qualifiedByName = "mapBookTitlesToBooks")
+    @Mappings({
+            @Mapping(source = "name", target = "name"),
+            @Mapping(source = "email", target = "email"),
+            @Mapping(source = "books", target = "books", qualifiedByName = "mapBookTitlesToBooks")
+    })
         Author toEntity(AuthorRequestDTO dto, @Context BookRepository bookRepository);
 
         @Mapping(source = "books", target = "books", qualifiedByName = "mapBooksToTitles")

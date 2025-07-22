@@ -13,6 +13,7 @@ import java.util.List;
 @Data
 @Setter
 @Getter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class AuthorRequestDTO {
@@ -21,4 +22,12 @@ public class AuthorRequestDTO {
     @Email(message = "Email should be valid")
     private String email;
     private List<String> books;
+
+    public List<String> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<String> books) {
+        this.books = books;
+    }
 }
