@@ -13,11 +13,23 @@ The repository will be continuously updated as I progress through the internship
 | 1    | Java Fundamentals & OOP        | ✅ Console-based Task Manager                         |
 | 2    | Advanced Java & MySQL          | ✅ Pet Clinic Management System                       |
 | 3    | Spring Boot Essentials         | ✅ Student Management API (Spring Boot + MySQL)       |
-| 4    | Spring Boot + JPA with MySQL   | Coming Soon...                                       |
+| 4    | Spring Boot + JPA with MySQL   | ✅ Library Management System (Spring Boot + JPA + MySQL) |
 | 5    | JSF Basics + Java Integration  | Coming Soon...                                       |
 | 6    | JSF + MySQL Integration        | Coming Soon...                                       |
 | 7    | Spring Boot + JSF + MySQL      | Coming Soon...                                       |
 | 8    | Final Project                   | Coming Soon...                                       |
+## 📅 **Internship Roadmap**
+
+| **Week** | **Main Topic**                        | **Project/Task**                                       |
+|----------|----------------------------------------|--------------------------------------------------------|
+| 1️⃣       | Java Fundamentals & OOP               | ✅ Console-based Task Manager                          |
+| 2️⃣       | Advanced Java & MySQL                 | ✅ Pet Clinic Management System                        |
+| 3️⃣       | Spring Boot Essentials                | ✅ Student Management API (Spring Boot + MySQL)        |
+| 4️⃣       | Spring Boot + JPA with MySQL          | ✅ Library Management System (Spring Boot + JPA + MySQL) |
+| 5️⃣       | JSF Basics + Java Integration         | 🔄 Coming Soon...                                      |
+| 6️⃣       | JSF + MySQL Integration               | 🔄 Coming Soon...                                      |
+| 7️⃣       | Spring Boot + JSF + MySQL             | 🔄 Coming Soon...                                      |
+| 8️⃣       | Final Project                         | 🔄 Coming Soon...                                      |
 
 ---
 
