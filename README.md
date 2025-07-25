@@ -14,7 +14,7 @@ The repository will be continuously updated as I progress through the internship
 | 2    | Advanced Java & MySQL          | ✅ Pet Clinic Management System                       |
 | 3    | Spring Boot Essentials         | ✅ Student Management API (Spring Boot + JDBC + MySQL)       |
 | 4    | Spring Boot + JPA with MySQL   | ✅ Library Management System (Spring Boot + JPA + MySQL) |
-| 5    | JSF Basics + Java Integration  | Coming Soon...                                       |
+| 5    | JSF Basics + Java Integration  | ✅ JSF Registration Form                                       |
 | 6    | JSF + MySQL Integration        | Coming Soon...                                       |
 | 7    | Spring Boot + JSF + MySQL      | Coming Soon...                                       |
 | 8    | Final Project                   | Coming Soon...                                       |
@@ -124,6 +124,26 @@ This week I built a Book and Author Management System using Spring Boot, JPA, an
 
 ---
 
+### 🌐 Week 5 - JSF Registration Form
+
+This week, I built a basic registration form using JavaServer Faces (JSF) 2.2 to practice server-side rendering and form binding.
+
+### ✅ Features:
+- Simple registration form (name, email, password)
+- Data binding to managed bean (request-scoped)
+- Validation using JSF `<f:validate>` and required fields
+- Feedback messages displayed with `<h:messages>`
+- Simple success page after form submission
+
+### 🛠️ Technologies:
+- Java EE
+- JSF 2.2 (Mojarra)
+- XHTML (Facelets)
+- Managed Beans (Java classes)
+- Maven
+
+---
+
 ## 🎬 Demo Videos
 
 You can find short demo clips for each project in the `demo/` folder or linked below:
@@ -137,9 +157,11 @@ You can find short demo clips for each project in the `demo/` folder or linked b
 ### 📚 Student Management API
 [![Student Managment Demo](https://img.youtube.com/vi/8E-93JOPBLI/hqdefault.jpg)](https://youtu.be/8E-93JOPBLI)
 
- ### 📚 Book & Author Management API
+### 📚 Book & Author Management API
 [![Book & Author Management Demo](https://img.youtube.com/vi/qZj2YvZiT_E/hqdefault.jpg)](https://youtu.be/qZj2YvZiT_E)
 
+### 🌐 JSF Registration Form 
+[![Registration Form](https://img.youtube.com/vi/DSt91doPYWU/hqdefault.jpg)](https://youtu.be/DSt91doPYWU)
 ---
 
 ## 👩‍💻 About Me
