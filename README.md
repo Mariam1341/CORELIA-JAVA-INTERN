@@ -15,7 +15,7 @@ The repository will be continuously updated as I progress through the internship
 | 3    | Spring Boot Essentials         | ✅ Student Management API (Spring Boot + JDBC + MySQL)       |
 | 4    | Spring Boot + JPA with MySQL   | ✅ Library Management System (Spring Boot + JPA + MySQL) |
 | 5    | JSF Basics + Java Integration  | ✅ JSF Registration Form                                       |
-| 6    | JSF + MySQL Integration        | Coming Soon...                                       |
+| 6    | JSF + MySQL Integration        | Employee Directory Project (JSF + JPA + MySQL)                                       |
 | 7    | Spring Boot + JSF + MySQL      | Coming Soon...                                       |
 | 8    | Final Project                   | Coming Soon...                                       |
 
@@ -144,6 +144,43 @@ This week, I built a basic registration form using JavaServer Faces (JSF) 2.2 to
 
 ---
 
+### 🌟 Employee Directory Project (JSF + JPA + MySQL)
+This project is a web-based Employee Directory built using JavaServer Faces (JSF 2.2), JPA (Hibernate), and MySQL, deployed on Tomcat 9. It demonstrates a full CRUD (Create, Read, Update, Delete) application with clean layering between entity, DAO, service, and JSF managed bean.
+
+### ✅ Features:
+List all employees in a data table
+
+Add new employees (name, email, department)
+
+Edit existing employee details
+
+Delete employees
+
+Server-side validation and data binding with JSF
+
+Persistence with JPA and MySQL database
+
+Simple and clean UI with JSF Facelets
+
+### 🛠️ Technologies:
+Java 1.8
+
+JSF 2.2 (Mojarra)
+
+JPA (Hibernate)
+
+MySQL
+
+MySQL Connector
+
+Servlet API
+
+Tomcat 9
+
+Maven 
+
+---
+
 ## 🎬 Demo Videos
 
 You can find short demo clips for each project in the `demo/` folder or linked below:
@@ -162,6 +199,10 @@ You can find short demo clips for each project in the `demo/` folder or linked b
 
 ### 🌐 JSF Registration Form 
 [![Registration Form](https://img.youtube.com/vi/DSt91doPYWU/hqdefault.jpg)](https://youtu.be/DSt91doPYWU)
+
+### 🌟 Employee Directory
+[![Employee Directory ](https://img.youtube.com/vi/aFl8a7sC_Ns/hqdefault.jpg)](https://youtu.be/aFl8a7sC_Ns)
+
 ---
 
 ## 👩‍💻 About Me
