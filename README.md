@@ -172,11 +172,13 @@ This project is a web-based Employee Directory built using JavaServer Faces (JSF
 
 You can find short demo clips for each project in the `demo/` folder or linked below:
 
-###📽️ Task Manager Console App  
-  [![Task Manager Demo](https://img.youtube.com/vi/stTNWfBljO0/hqdefault.jpg)](https://youtu.be/stTNWfBljO0)
+
+###📽️ Task Manager Console App 
+
+[![Task Manager Demo](https://img.youtube.com/vi/stTNWfBljO0/hqdefault.jpg)](https://youtu.be/stTNWfBljO0)
 
 ### 🐾 Pet Clinic Console App   
- [![Pet Clinic Demo](https://img.youtube.com/vi/RQNuUSZU1zU/hqdefault.jpg)](https://youtu.be/RQNuUSZU1zU)
+[![Pet Clinic Demo](https://img.youtube.com/vi/RQNuUSZU1zU/hqdefault.jpg)](https://youtu.be/RQNuUSZU1zU)
 
 ### 📚 Student Management API
 [![Student Managment Demo](https://img.youtube.com/vi/8E-93JOPBLI/hqdefault.jpg)](https://youtu.be/8E-93JOPBLI)
