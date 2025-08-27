@@ -1,4 +1,4 @@
-# Corelia Internship Projects 🚀
+# CORELIA Internship Projects 🚀
 
 This repository contains my projects and practical tasks for the **Java Internship Program at CORELIA**.
 
@@ -12,11 +12,11 @@ The repository will be continuously updated as I progress through the internship
 |------|--------------------------------|-------------------------------------------------------|
 | 1    | Java Fundamentals & OOP        | ✅ Console-based Task Manager                         |
 | 2    | Advanced Java & MySQL          | ✅ Pet Clinic Management System                       |
-| 3    | Spring Boot Essentials         | ✅ Student Management API (Spring Boot + JDBC + MySQL)       |
-| 4    | Spring Boot + JPA with MySQL   | ✅ Library Management System (Spring Boot + JPA + MySQL) |
+| 3    | Spring Boot Essentials         | ✅ Student Management API       |
+| 4    | Spring Boot + JPA with MySQL   | ✅ Library Management System  |
 | 5    | JSF Basics + Java Integration  | ✅ JSF Registration Form                                       |
-| 6    | JSF + MySQL Integration        | ✅ Employee Directory Project (JSF + JPA + MySQL)                                       |
-| 7    | Spring Boot + JSF + MySQL      | Coming Soon...                                       |
+| 6    | JSF + MySQL Integration        | ✅ Employee Directory Project                                    |
+| 7    | Spring Boot + JSF + MySQL      | ✅ Attendance Tracking System  |
 | 8    | Final Project                   | Coming Soon...                                       |
 
 ---
@@ -41,6 +41,10 @@ As part of the first week's assignment, I built a simple **Task Manager** using 
 - Object-Oriented Programming (Encapsulation, Classes, Enums)  
 - Defensive programming using custom input handling  
 
+### 🎬 Demo Video
+
+[![Task Manager Demo](https://img.youtube.com/vi/stTNWfBljO0/hqdefault.jpg)](https://youtu.be/stTNWfBljO0)
+
 ---
 
 ### 🐾 Week 2 - Pet Clinic Console App
@@ -61,7 +65,11 @@ This project is a **console-based Pet Clinic Management System** that performs f
 - MySQL  
 - Console-based interaction  
 - Database connectivity  
-- Clean separation between DAO and models  
+- Clean separation between DAO and models
+
+### 🎬 Demo Video
+
+[![Pet Clinic Demo](https://img.youtube.com/vi/RQNuUSZU1zU/hqdefault.jpg)](https://youtu.be/RQNuUSZU1zU)
 
 ---
 
@@ -86,6 +94,10 @@ This project is a **basic RESTful Student Management System**, developed using *
 - Layered architecture (Controller, Service, Repository)
 
 > ⚠️ **Note**: This version is kept simple and does **not** include DTOs, validation, or custom exception handling — the focus is on mastering core Spring Boot concepts first.
+
+### 🎬 Demo Video
+
+[![Student Managment Demo](https://img.youtube.com/vi/8E-93JOPBLI/hqdefault.jpg)](https://youtu.be/8E-93JOPBLI)
 
 ---
 
@@ -122,6 +134,10 @@ This week I built a Book and Author Management System using Spring Boot, JPA, an
 - Custom mapping logic using @Named in MapStruct
 - Using @ComponentModel("spring") to integrate MapStruct with Spring
 
+### 🎬 Demo Video
+
+[![Book & Author Management Demo](https://img.youtube.com/vi/qZj2YvZiT_E/hqdefault.jpg)](https://youtu.be/qZj2YvZiT_E)
+
 ---
 
 ### 🌐 Week 5 - JSF Registration Form
@@ -141,6 +157,10 @@ This week, I built a basic registration form using JavaServer Faces (JSF) 2.2 to
 - XHTML (Facelets)
 - Managed Beans (Java classes)
 - Maven
+
+### 🎬 Demo Video
+
+[![Registration Form](https://img.youtube.com/vi/DSt91doPYWU/hqdefault.jpg)](https://youtu.be/DSt91doPYWU)
 
 ---
 
@@ -166,31 +186,34 @@ This project is a web-based Employee Directory built using JavaServer Faces (JSF
 - Tomcat 9
 - Maven 
 
+### 🎬 Demo Video
+
+[![Employee Directory ](https://img.youtube.com/vi/aFl8a7sC_Ns/hqdefault.jpg)](https://youtu.be/aFl8a7sC_Ns)
+
 ---
 
-## 🎬 Demo Videos
+### 🕒 Week 7 - Attendance Tracking System (JSF + PrimeFaces + MySQL)
+This project is a web-based Attendance Tracking System built using **JSF 2.2**, **PrimeFaces**, and **MySQL**, deployed on Tomcat 9. It allows managing employee attendance with a modern UI.
 
-You can find short demo clips for each project in the `demo/` folder or linked below:
+### ✅ Features:
+  - Add new attendance records
+  - Edit existing attendance entries
+  - Delete records
+  - Mark presence/absence
+  - Integrated calendar component for date selection
+  - User-friendly PrimeFaces components and Growl notifications
 
+### 🛠️ Technologies:
+  - Java 1.8
+  - JSF 2.2
+  - PrimeFaces
+  - JPA (Hibernate)
+  - MySQL
+  - Tomcat 9
+  - Maven
 
-###📽️ Task Manager Console App 
+### 🎬 Demo Video
 
-[![Task Manager Demo](https://img.youtube.com/vi/stTNWfBljO0/hqdefault.jpg)](https://youtu.be/stTNWfBljO0)
-
-### 🐾 Pet Clinic Console App   
-[![Pet Clinic Demo](https://img.youtube.com/vi/RQNuUSZU1zU/hqdefault.jpg)](https://youtu.be/RQNuUSZU1zU)
-
-### 📚 Student Management API
-[![Student Managment Demo](https://img.youtube.com/vi/8E-93JOPBLI/hqdefault.jpg)](https://youtu.be/8E-93JOPBLI)
-
-### 📚 Book & Author Management API
-[![Book & Author Management Demo](https://img.youtube.com/vi/qZj2YvZiT_E/hqdefault.jpg)](https://youtu.be/qZj2YvZiT_E)
-
-### 🌐 JSF Registration Form 
-[![Registration Form](https://img.youtube.com/vi/DSt91doPYWU/hqdefault.jpg)](https://youtu.be/DSt91doPYWU)
-
-### 🌟 Employee Directory
-[![Employee Directory ](https://img.youtube.com/vi/aFl8a7sC_Ns/hqdefault.jpg)](https://youtu.be/aFl8a7sC_Ns)
 
 ---
 
