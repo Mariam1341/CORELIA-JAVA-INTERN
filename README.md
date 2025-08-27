@@ -201,12 +201,11 @@ This project is a web-based Attendance Tracking System built using **JSF 2.2**, 
   - Delete records
   - Mark presence/absence
   - Integrated calendar component for date selection
-  - User-friendly PrimeFaces components and Growl notifications
+
 
 ### 🛠️ Technologies:
   - Java 1.8
   - JSF 2.2
-  - PrimeFaces
   - JPA (Hibernate)
   - MySQL
   - Tomcat 9
