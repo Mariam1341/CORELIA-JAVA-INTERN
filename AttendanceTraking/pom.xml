@@ -3,14 +3,12 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.codenotfound</groupId>
-  <artifactId>jsf-primefaces-datatable-mysql</artifactId>
+  <groupId>com.corelia</groupId>
+  <artifactId>attendance</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>jsf-primefaces-datatable-mysql</name>
-  <description>JSF - PrimeFaces MySQL DataTable Example</description>
-  <url>https://www.codenotfound.com/jsf-primefaces/</url>
+  <name>attendance</name>
 
   <parent>
     <groupId>org.joinfaces</groupId>
