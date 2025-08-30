@@ -1,0 +1,107 @@
+/* auth.css */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--secondary-color);
+}
+
+.auth-container {
+    max-width: 450px;
+    margin: 60px auto;
+    background: #fff;
+    padding: 35px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-container h2 {
+    margin-bottom: 25px;
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.auth-container .input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.auth-container .input-group input {
+    width: 100%;
+    padding: 12px 40px 12px 12px; /* space for icon */
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    transition: all var(--transition-speed);
+}
+
+.auth-container .input-group input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 8px rgba(74, 144, 226, 0.2);
+    outline: none;
+}
+
+.auth-container .input-group i {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+    pointer-events: none;
+}
+
+.auth-container button {
+    background: var(--primary-color);
+    color: #fff;
+    padding: 14px;
+    width: 100%;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background var(--transition-speed);
+}
+
+.auth-container button:hover {
+    background: #357ABD;
+}
+
+.auth-container .link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: var(--primary-color);
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: color var(--transition-speed);
+}
+
+.auth-container .link:hover {
+    color: #2A5D9F;
+}.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group .form-input {
+    width: 100%;
+    padding: 12px 40px 12px 12px; 
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+}
+
+.input-group i {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+    pointer-events: none;
+}
