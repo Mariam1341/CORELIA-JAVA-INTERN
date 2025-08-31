@@ -17,13 +17,15 @@ public class Task {
     private String description;
 
     @Enumerated(EnumType.STRING)
-    private Status status = Status.NEW;
+    private Status status = Status.TODO;
 
     @ManyToOne
-    @JoinColumn(name = "owner_id")
-    private User owner;
+    private User user;
 
-    private LocalDateTime createdAt = LocalDateTime.now();
+    
+    public boolean isDone() {
+    	return this.status == Status.DONE;
+    }
 
 	public Long getId() {
 		return id;
@@ -57,21 +59,17 @@ public class Task {
 		this.status = status;
 	}
 
-	public User getOwner() {
-		return owner;
+	
+
+	public User getUser() {
+		return user;
 	}
 
-	public void setOwner(User owner) {
-		this.owner = owner;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-	public LocalDateTime getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(LocalDateTime createdAt) {
-		this.createdAt = createdAt;
-	}
+	
 
     
 }

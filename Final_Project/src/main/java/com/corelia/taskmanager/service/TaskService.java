@@ -1,38 +1,59 @@
 package com.corelia.taskmanager.service;
 
 
+import com.corelia.taskmanager.model.Status;
 import com.corelia.taskmanager.model.Task;
 import com.corelia.taskmanager.model.User;
 import com.corelia.taskmanager.repository.TaskRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
-
 @Service
-@Transactional
 public class TaskService {
 
-    private final TaskRepository taskRepository;
+    @Autowired
+    private TaskRepository taskRepository;
+    
+    @Autowired 
+    private UserService userService;
 
-    public TaskService(TaskRepository taskRepository) {
-        this.taskRepository = taskRepository;
+    public List<Task> getTasksForUser(String username) {
+        return taskRepository.findByUserUsername(username);
     }
 
-    public List<Task> getTasksForUser(User user) {
-        return taskRepository.findByOwner(user);
+    public void addTask(Task task, String username) {
+        // نفترض UserService موجودة
+    	User user = userService.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found: " + username));
+        task.setUser(user);
+        taskRepository.save(task);
     }
 
-    public Task saveTask(Task task) {
+    public Task updateTask(Task task) {
         return taskRepository.save(task);
     }
 
-    public Task getTaskById(Long id) {
-        return taskRepository.findOne(id);
+    public void deleteTask(Task task) {
+        taskRepository.delete(task);
     }
 
-    public void deleteTask(Long id) {
-        taskRepository.delete(id);
+    public void advanceStatus(Task task) {
+        switch (task.getStatus()) {
+            case TODO:
+                task.setStatus(Status.IN_PROGRESS);
+                break;
+            case IN_PROGRESS:
+                task.setStatus(Status.DONE);
+                break;
+            case DONE:
+                task.setStatus(Status.TODO);
+                break;
+        }
+        taskRepository.save(task);
     }
+
 }

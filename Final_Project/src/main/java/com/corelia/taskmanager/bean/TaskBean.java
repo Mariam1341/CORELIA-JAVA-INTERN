@@ -10,76 +10,160 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
-
 @Named
-@SessionScope
+@SessionScoped
 public class TaskBean implements Serializable {
 
-    private final TaskService taskService;
-    private Task task;
+    @Autowired
+    private TaskService taskService;
+    
+    
+
+    @Inject
+    private AuthenticationBean authBean;
+    
+    private List<Task> todoTasks;
+    private List<Task> inProgressTasks;
+    private List<Task> doneTasks;
+    
     private List<Task> tasks;
-    private List<Status> statusOptions = Arrays.asList(Status.values());
+    private Task newTask = new Task();
+   
+    private Task selectedTask; 
 
-    // ممكن تضيف طريقة تجيب الـ logged user من session
-    private User loggedUser;  
-
-    public TaskBean(TaskService taskService) {
-        this.taskService = taskService;
-        this.tasks = taskService.getTasksForUser(loggedUser);
-        this.task = new Task();
+    @PostConstruct
+    public void init() {
+        loadTasks();
     }
 
-    public User getLoggedUser() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null && auth.getPrincipal() instanceof CustomUserDetails) {
-            return ((CustomUserDetails) auth.getPrincipal()).getUser();
+
+
+    public void loadTasks() {
+        tasks = taskService.getTasksForUser(authBean.getUsername());
+    }
+
+    public void addTask() {
+        taskService.addTask(newTask, authBean.getUsername());
+        newTask = new Task();
+        loadTasks();
+    }
+
+    public void advanceStatus(Task task) {
+        taskService.advanceStatus(task);
+        loadTasks();
+    }
+    // Delete
+    public void deleteTask(Task task) {
+    	taskService.deleteTask(task);
+        tasks.remove(task);
+    }
+
+    // Edit
+    public void editTask(Task task) {
+    	taskService.updateTask(task);
+    }
+
+
+    public Task getSelectedTask() {
+		return selectedTask;
+	}
+
+
+
+	public void setSelectedTask(Task selectedTask) {
+		this.selectedTask = selectedTask;
+	}
+
+
+
+	public void setTodoTasks(List<Task> todoTasks) {
+		this.todoTasks = todoTasks;
+	}
+
+
+
+	public void setInProgressTasks(List<Task> inProgressTasks) {
+		this.inProgressTasks = inProgressTasks;
+	}
+
+
+
+	public void setDoneTasks(List<Task> doneTasks) {
+		this.doneTasks = doneTasks;
+	}
+    public void prepareEdit(Task task) {
+        this.selectedTask = task;
+        this.newTask = task; // خلي الفورم يظهر بيانات المهمة
+    }
+    public void addOrUpdateTask() {
+        if (selectedTask != null) {
+            taskService.updateTask(selectedTask);
+        } else {
+            taskService.addTask(newTask, authBean.getUsername());
+            tasks.add(newTask);
         }
-        return null;
+        resetForm();
+    }
+    private void resetForm() {
+        newTask = new Task();
+        selectedTask = null;
     }
 
-    public List<Task> getTasks() {
-        User user = getLoggedUser(); 
-        tasks = taskService.getTasksForUser(user);
-        return tasks;
+	public List<Task> getTodoTasks() {
+        return tasks.stream().filter(t -> t.getStatus() == Status.TODO).collect(Collectors.toList());
     }
+    public List<Task> getInProgressTasks() {
+    	  return tasks.stream().filter(t -> t.getStatus() == Status.IN_PROGRESS).collect(Collectors.toList());
+    }
+    
+    public List<Task> getDoneTasks() {
+  	  return tasks.stream().filter(t -> t.getStatus() == Status.DONE).collect(Collectors.toList());
+  }
 
-    public Task getTask() {
-        return task;
-    }
+	public TaskService getTaskService() {
+		return taskService;
+	}
 
-    public void setTask(Task task) {
-        this.task = task;
-    }
+	public void setTaskService(TaskService taskService) {
+		this.taskService = taskService;
+	}
 
-    public List<Status> getStatusOptions() {
-        return statusOptions;
-    }
+	public AuthenticationBean getAuthBean() {
+		return authBean;
+	}
 
-    public String newTask() {
-        task = new Task();
-        return "task_form.xhtml?faces-redirect=true";
-    }
+	public void setAuthBean(AuthenticationBean authBean) {
+		this.authBean = authBean;
+	}
 
-    public String editTask(Task t) {
-        task = t;
-        return "task_form.xhtml?faces-redirect=true";
-    }
+	public List<Task> getTasks() {
+		return tasks;
+	}
 
-    public String saveTask() {
-        task.setOwner(getLoggedUser()); // ربط المهمة بالمستخدم اللي عامل login
-        taskService.saveTask(task);
-        return "tasks.xhtml?faces-redirect=true";
-    }
+	public void setTasks(List<Task> tasks) {
+		this.tasks = tasks;
+	}
 
-    public String deleteTask(Task t) {
-        taskService.deleteTask(t.getId());
-        return "tasks.xhtml?faces-redirect=true";
-    }
+	public Task getNewTask() {
+		return newTask;
+	}
+
+	public void setNewTask(Task newTask) {
+		this.newTask = newTask;
+	}
+
+    
 }

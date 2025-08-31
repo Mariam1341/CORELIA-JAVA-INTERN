@@ -57,7 +57,12 @@ public class AuthenticationBean {
            e.printStackTrace();
        }
    }
-   
+   public String logout() {
+       SecurityContextHolder.clearContext();
+       FacesContext.getCurrentInstance().getExternalContext()
+           .invalidateSession();
+       return "login.xhtml?faces-redirect=true";
+   }
    public void setUsername(String username) { this.username = username; }
    public String getPassword() { return password; }
    public void setPassword(String password) { this.password = password; }

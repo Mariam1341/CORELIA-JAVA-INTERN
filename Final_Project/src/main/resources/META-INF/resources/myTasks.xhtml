@@ -1,0 +1,153 @@
+<ui:composition template="userDashboard.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+                
+                
+
+    <ui:define name="content">
+        <h2 class="mb-4 text-center">My Tasks</h2>
+
+        <!-- Add New Task -->
+   <!-- Add New Task -->
+<h:form prependId="false" class="mb-4">
+    <div class="card border-light shadow-sm p-3 mb-4">
+        <div class="card-header #{taskBean.selectedTask != null ? 'bg-warning' : 'bg-primary'} text-white">
+            #{taskBean.selectedTask != null ? 'Edit Task' : 'Add New Task'}
+        </div>
+        <div class="card-body">
+            <h:panelGrid columns="1" styleClass="mb-3">
+                <h:outputLabel for="title" value="Task Title:"/>
+                <h:inputText id="title" value="#{taskBean.newTask.title}" styleClass="form-control mb-2"/>
+
+                <h:outputLabel for="description" value="Task Description:"/>
+                <h:inputTextarea id="description" value="#{taskBean.newTask.description}" styleClass="form-control"/>
+            </h:panelGrid>
+
+            <h:commandButton value="#{taskBean.selectedTask != null ? 'Update Task' : 'Add Task'}"
+                             action="#{taskBean.addOrUpdateTask}"
+                             styleClass="btn #{taskBean.selectedTask != null ? 'btn-warning' : 'btn-primary'}"/>
+        </div>
+    </div>
+</h:form>
+
+
+
+
+        <h:form prependId="false">
+            <div class="row">
+                <!-- TODO Column -->
+                <div class="col-md-4">
+                    <div class="card border-secondary mb-3">
+                        <div class="card-header bg-secondary text-white text-center">
+                            To Do
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <ui:repeat value="#{taskBean.todoTasks}" var="task">
+               <li class="list-group-item p-3 mb-2 d-flex justify-content-between align-items-center task-card">
+    <div class="task-info flex-grow-1">
+        <strong>#{task.title}</strong>
+        <p class="mb-0 text-muted" style="font-size:0.9rem;">#{task.description}</p>
+    </div>
+    
+    <div class="task-actions d-flex flex-column align-items-center ms-3">
+        <div class="d-flex mb-2">
+            <h:commandLink action="#{taskBean.prepareEdit(task)}" styleClass="btn btn-link p-0 me-2">
+                <i class="fa fa-pen text-primary"></i>
+            </h:commandLink>
+            <h:commandLink action="#{taskBean.deleteTask(task)}" styleClass="btn btn-link p-0"
+                           onclick="return confirm('Are you sure you want to delete this task?');">
+                <i class="fa fa-trash text-danger"></i>
+            </h:commandLink>
+        </div>
+        <h:commandButton value="#{task.status eq 'TODO' ? 'Move to In Progress' : task.status eq 'IN_PROGRESS' ? 'Move to Done' : 'Move to To Do'}"
+                         action="#{taskBean.advanceStatus(task)}"
+                         styleClass="btn btn-sm #{task.status eq 'TODO' ? 'btn-secondary' : task.status eq 'IN_PROGRESS' ? 'btn-warning' : 'btn-success'}"/>
+    </div>
+</li>
+
+
+
+                            </ui:repeat>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- IN_PROGRESS Column -->
+                <div class="col-md-4">
+                    <div class="card border-warning mb-3">
+                        <div class="card-header bg-warning text-dark text-center">
+                            In Progress
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <ui:repeat value="#{taskBean.inProgressTasks}" var="task">
+       <li class="list-group-item p-3 mb-2 d-flex justify-content-between align-items-center task-card">
+    <div class="task-info flex-grow-1">
+        <strong>#{task.title}</strong>
+        <p class="mb-0 text-muted" style="font-size:0.9rem;">#{task.description}</p>
+    </div>
+    
+    <div class="task-actions d-flex flex-column align-items-center ms-3">
+        <div class="d-flex mb-2">
+            <h:commandLink action="#{taskBean.prepareEdit(task)}" styleClass="btn btn-link p-0 me-2">
+                <i class="fa fa-pen text-primary"></i>
+            </h:commandLink>
+            <h:commandLink action="#{taskBean.deleteTask(task)}" styleClass="btn btn-link p-0"
+                           onclick="return confirm('Are you sure you want to delete this task?');">
+                <i class="fa fa-trash text-danger"></i>
+            </h:commandLink>
+        </div>
+        <h:commandButton value="#{task.status eq 'TODO' ? 'Move to In Progress' : task.status eq 'IN_PROGRESS' ? 'Move to Done' : 'Move to To Do'}"
+                         action="#{taskBean.advanceStatus(task)}"
+                         styleClass="btn btn-sm #{task.status eq 'TODO' ? 'btn-secondary' : task.status eq 'IN_PROGRESS' ? 'btn-warning' : 'btn-success'}"/>
+    </div>
+</li>
+
+                            </ui:repeat>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- DONE Column -->
+                <div class="col-md-4">
+                    <div class="card border-success mb-3">
+                        <div class="card-header bg-success text-white text-center">
+                            Done
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <ui:repeat value="#{taskBean.doneTasks}" var="task">
+                            <li class="list-group-item p-3 mb-2 d-flex justify-content-between align-items-center task-card">
+    <div class="task-info flex-grow-1">
+        <strong>#{task.title}</strong>
+        <p class="mb-0 text-muted" style="font-size:0.9rem;">#{task.description}</p>
+    </div>
+    
+    <div class="task-actions d-flex flex-column align-items-center ms-3">
+        <div class="d-flex mb-2">
+            <h:commandLink action="#{taskBean.prepareEdit(task)}" styleClass="btn btn-link p-0 me-2">
+                <i class="fa fa-pen text-primary"></i>
+            </h:commandLink>
+            <h:commandLink action="#{taskBean.deleteTask(task)}" styleClass="btn btn-link p-0"
+                           onclick="return confirm('Are you sure you want to delete this task?');">
+                <i class="fa fa-trash text-danger"></i>
+            </h:commandLink>
+        </div>
+        <h:commandButton value="#{task.status eq 'TODO' ? 'Move to In Progress' : task.status eq 'IN_PROGRESS' ? 'Move to Done' : 'Move to To Do'}"
+                         action="#{taskBean.advanceStatus(task)}"
+                         styleClass="btn btn-sm #{task.status eq 'TODO' ? 'btn-secondary' : task.status eq 'IN_PROGRESS' ? 'btn-warning' : 'btn-success'}"/>
+    </div>
+</li>
+
+                            </ui:repeat>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+
+
+    </ui:define>
+
+</ui:composition>
+
