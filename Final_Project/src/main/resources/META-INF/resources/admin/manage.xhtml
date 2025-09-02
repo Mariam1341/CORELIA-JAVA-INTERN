@@ -1,4 +1,4 @@
-<ui:composition template="dashboard.xhtml"
+<ui:composition template="/dashboard.xhtml"
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -8,17 +8,22 @@
         <h2 class="text-center mb-4" style="color:#4CAF50;">Manage Users</h2>
 
         <h:form id="userForm">
-            <p:dataTable value="#{userBean.allUsers}" var="user"
-                         styleClass="table table-hover"
-                         paginator="true" rows="10" responsiveLayout="scroll" 
-                         style="width:100%;">
+<p:dataTable value="#{userBean.allUsers}" var="user"
+             styleClass="table table-hover"
+         
+             responsiveLayout="scroll"
+         >
+>
+
 
                 <p:column headerText="Username" style="width:25%;">
                     <h:outputText value="#{user.username}" />
                 </p:column>
 
                 <p:column headerText="Role" style="width:25%;">
-                    <p:tag value="#{user.role}" severity="#{user.role eq 'ADMIN' ? 'success' : 'info'}" />
+                      <h:outputText value="#{user.role}"
+                  styleClass="#{user.role eq 'ADMIN' ? 'badge bg-success' : 'badge bg-info'}" />
+
                 </p:column>
 
                 <p:column headerText="Actions" style="width:50%; text-align:center;">

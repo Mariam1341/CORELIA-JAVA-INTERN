@@ -25,6 +25,8 @@ public class AuthenticationBean {
 	    private String password;
 	    
 	    private String email;
+	    
+	    private boolean isAdmin;
 
 
 	    @Autowired
@@ -39,8 +41,13 @@ public class AuthenticationBean {
 	        return "";
 	    }
 
-	    public boolean getIsAdmin() {
+	    public void setAdmin(boolean isAdmin) {
+			this.isAdmin = isAdmin;
+		}
+
+		public boolean getIsAdmin() {
 	        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	        
 	        return auth.getAuthorities().stream()
 	                   .anyMatch(r -> r.getAuthority().equals("ADMIN"));
 	    }
@@ -61,12 +68,19 @@ public class AuthenticationBean {
            e.printStackTrace();
        }
    }
-   public String logout() {
-       SecurityContextHolder.clearContext();
-       FacesContext.getCurrentInstance().getExternalContext()
-           .invalidateSession();
-       return "login.xhtml?faces-redirect=true";
-   }
+//   public String logout() {
+//       SecurityContextHolder.clearContext();
+//       FacesContext.getCurrentInstance().getExternalContext()
+//           .invalidateSession();
+//       return "login.xhtml?faces-redirect=true";
+//   }
+   
+   public void logout() throws IOException {
+	    FacesContext facesContext = FacesContext.getCurrentInstance();
+	    facesContext.getExternalContext().invalidateSession();
+	    facesContext.getExternalContext().redirect("login.xhtml"); // redirect مباشر
+	}
+
    public void setUsername(String username) { this.username = username; }
    public String getPassword() { return password; }
    public void setPassword(String password) { this.password = password; }
