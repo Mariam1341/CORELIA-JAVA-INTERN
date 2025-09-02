@@ -1,6 +1,7 @@
 package com.corelia.taskmanager.service;
 
 
+import com.corelia.taskmanager.dto.TaskReportDTO;
 import com.corelia.taskmanager.model.Status;
 import com.corelia.taskmanager.model.Task;
 import com.corelia.taskmanager.model.User;
@@ -55,5 +56,10 @@ public class TaskService {
         }
         taskRepository.save(task);
     }
+
+	public List<TaskReportDTO> getTaskCountByStatus() {
+		
+		return taskRepository.countTasksByStatus();
+	}
 
 }
