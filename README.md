@@ -192,8 +192,8 @@ This project is a web-based Employee Directory built using JavaServer Faces (JSF
 
 ---
 
-### 🕒 Week 7 - Attendance Tracking System (JSF + PrimeFaces + MySQL)
-This project is a web-based Attendance Tracking System built using **JSF 2.2**, **PrimeFaces**, and **MySQL**, deployed on Tomcat 9. It allows managing employee attendance with a modern UI.
+### 🕒 Week 7 - Attendance Tracking System (JSF + SpringBoot + MySQL)
+This project is a web-based Attendance Tracking System built using **JSF 2.2**, **SpringBoot**, and **MySQL**, deployed on Tomcat 9. It allows managing employee attendance with a modern UI.
 
 ### ✅ Features:
   - Add new attendance records
@@ -212,7 +212,7 @@ This project is a web-based Attendance Tracking System built using **JSF 2.2**, 
   - Maven
 
 ### 🎬 Demo Video
-
+[![Attendance Tracking System Demo](https://img.youtube.com/vi/xgzgmSO2mnk/hqdefault.jpg)](((https://youtu.be/xgzgmSO2mnk)
 
 ---
 
