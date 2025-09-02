@@ -17,10 +17,12 @@ public class User {
 
     @Column(nullable = false)
     private String password;
+    
+    private String email;
 
     private boolean enabled = true;
 
-    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private Role role;
 
 	public Long getId() {

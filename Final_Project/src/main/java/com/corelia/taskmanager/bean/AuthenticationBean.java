@@ -19,9 +19,13 @@ import com.corelia.taskmanager.service.UserService;
 @SessionScope
 public class AuthenticationBean {
 
-	 private String username;
+		private String username;
 
+		
 	    private String password;
+	    
+	    private String email;
+
 
 	    @Autowired
 	    private UserService userService;
@@ -32,10 +36,10 @@ public class AuthenticationBean {
 	        if (auth != null && auth.isAuthenticated() && !(auth instanceof AnonymousAuthenticationToken)) {
 	            return auth.getName(); 
 	        }
-	        return "Guest";
+	        return "";
 	    }
 
-	    public boolean isAdmin() {
+	    public boolean getIsAdmin() {
 	        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	        return auth.getAuthorities().stream()
 	                   .anyMatch(r -> r.getAuthority().equals("ADMIN"));
@@ -43,7 +47,7 @@ public class AuthenticationBean {
 
    public void register() {
        try {
-           userService.registerUser(username, password);
+           userService.addUser(username, email, password);
            FacesContext.getCurrentInstance().addMessage(null,
                new FacesMessage(FacesMessage.SEVERITY_INFO, 
                                 "Success", "Registration successful! Please login."));

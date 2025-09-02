@@ -20,28 +20,31 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         this.userDetailsService = userDetailsService;
     }
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService)
-            .passwordEncoder(passwordEncoder());
-    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
             .authorizeRequests()
-            .antMatchers("/", "/welcome.xhtml", "/register.xhtml", "/login.xhtml").permitAll()
-                .antMatchers("/admin/**").hasRole("ADMIN")
+            .antMatchers("/admin/**").hasAuthority("ADMIN")
+            .antMatchers("/user/**").hasAnyAuthority("USER","ADMIN")
+
+                .antMatchers("/", "/register.xhtml", "/login.xhtml", "/resources/**").permitAll()
                 .anyRequest().authenticated()
             .and()
             .formLogin()
                 .loginPage("/login.xhtml")
-                .defaultSuccessUrl("/userDashboard.xhtml", true)
+                .defaultSuccessUrl("/dashboard.xhtml", true)
                 .failureUrl("/login.xhtml?error=true")
             .and()
             .logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/login.xhtml?logout=true");
+    }
+    
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService)
+            .passwordEncoder(passwordEncoder());
     }
 
     @Bean

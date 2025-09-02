@@ -27,6 +27,11 @@
                              styleClass="form-control" placeholder="Username"/>
                 <i class="fa fa-user position-absolute" style="right: 10px; top: 12px;"></i>
             </div>
+<div class="mb-3 position-relative">
+                <h:inputText id="username" value="#{authenticationBean.username}" required="true"
+                             styleClass="form-control" placeholder="Username"/>
+                <i class="fa fa-email position-absolute" style="right: 10px; top: 12px;"></i>
+            </div>
 
             <div class="mb-3 position-relative">
                 <h:inputSecret id="password" value="#{authenticationBean.password}" required="true"

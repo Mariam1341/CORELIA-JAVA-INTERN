@@ -2,62 +2,56 @@ package com.corelia.taskmanager.bean;
 
 import org.springframework.web.context.annotation.SessionScope;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import com.corelia.taskmanager.model.User;
 import com.corelia.taskmanager.service.UserService;
 
 @Named
 @SessionScope
 public class UserBean {
 
-	 private String username;
+	@Autowired
+    private UserService userService;
 
-	    private String password;
+    private List<User> allUsers;
 
-	    @Autowired
-	    private UserService userService;
-	    
-	    
-	    public String getUsername() {
-	        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	        if (auth != null && auth.isAuthenticated() && !(auth instanceof AnonymousAuthenticationToken)) {
-	            return auth.getName(); 
-	        }
-	        return "Guest";
-	    }
-
-	    public boolean isAdmin() {
-	        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	        return auth.getAuthorities().stream()
-	                   .anyMatch(r -> r.getAuthority().equals("ROLE_ADMIN"));
-	    }
-
-    void register() {
-        try {
-            userService.registerUser(username, password);
-            FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage(FacesMessage.SEVERITY_INFO, 
-                                 "Success", "Registration successful! Please login."));
-            FacesContext.getCurrentInstance().getExternalContext()
-                        .redirect("login.xhtml");
-        } catch (RuntimeException e) {
-            FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage(FacesMessage.SEVERITY_ERROR,
-                                 "Error", e.getMessage()));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    @PostConstruct
+    public void init() {
+        allUsers = userService.getAllUsers();
     }
-    
-    public void setUsername(String username) { this.username = username; }
-    public String getPassword() { return password; }
-    public void setPassword(String password) { this.password = password; }
+
+    public void makeAdmin(String username) {
+        userService.updateRole(username, "ADMIN");
+        allUsers = userService.getAllUsers(); // refresh table
+        FacesContext.getCurrentInstance().addMessage(null,
+            new FacesMessage(FacesMessage.SEVERITY_INFO, 
+                             "Success", username + " is now an Admin."));
+    }
+
+    public void deleteUser(String username) {
+        userService.deleteUser(username);
+        allUsers = userService.getAllUsers(); // refresh table
+        FacesContext.getCurrentInstance().addMessage(null,
+            new FacesMessage(FacesMessage.SEVERITY_INFO, 
+                             "Deleted", "User " + username + " has been removed."));
+    }
+
+    public List<User> getAllUsers() {
+        return allUsers;
+    }
 }
