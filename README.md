@@ -251,6 +251,7 @@ It is a **Self-Assigned Task Management System** where users can create, manage,
 
 ## 🎬 Demo Video
 
+[![Task Management System Demo](https://img.youtube.com/vi/p28-DIzS0S0/hqdefault.jpg)](https://youtu.be/p28-DIzS0S0)
 
 ---
 
