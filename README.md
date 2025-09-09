@@ -17,7 +17,7 @@ The repository will be continuously updated as I progress through the internship
 | 5    | JSF Basics + Java Integration  | ✅ JSF Registration Form                                       |
 | 6    | JSF + MySQL Integration        | ✅ Employee Directory Project                                    |
 | 7    | Spring Boot + JSF + MySQL      | ✅ Attendance Tracking System  |
-| 8    | Final Project                   | Coming Soon...                                       |
+| 8    | Final Project                  | ✅ Task Management System                                       |
 
 ---
 
@@ -212,7 +212,66 @@ This project is a web-based Attendance Tracking System built using **JSF 2.2**, 
   - Maven
 
 ### 🎬 Demo Video
-[![Attendance Tracking System Demo](https://img.youtube.com/vi/xgzgmSO2mnk/hqdefault.jpg)](((https://youtu.be/xgzgmSO2mnk)
+[![Attendance Tracking System Demo](https://img.youtube.com/vi/xgzgmSO2mnk/hqdefault.jpg)](https://youtu.be/xgzgmSO2mnk)
+
+---
+
+# 📦 Week 8 - Final Project: Task Management System (JSF + Spring Boot + MySQL)
+
+This is the **capstone project** of the internship, combining everything learned in previous weeks: **Java, Spring Boot, JSF, JPA, and MySQL**.  
+It is a **Self-Assigned Task Management System** where users can create, manage, and track their own tasks.
+
+---
+
+## ✅ Features
+- User registration and authentication
+- Self-assigned tasks (create, edit, delete)
+- Task statuses: TODO, IN_PROGRESS, DONE
+- Responsive Dashboard with sidebar navigation
+- **Reporting**:
+  - Pie Chart showing tasks by status
+  - Bar Chart showing number of tasks per user
+- DataTable with all tasks, pagination, and colored status badges
+- Logout functionality
+- Custom error page for unexpected errors
+
+---
+
+## 🛠️ Technologies
+- Java 1.8
+- JSF 2.2 
+- Spring Boot
+- JPA / Hibernate
+- MySQL
+- PrimeFaces (Charts & DataTable)
+- Bootstrap 5
+- Maven
+
+---
+
+## 🎬 Demo Video
+
+
+---
+
+## 👩‍💻 Internship Completion
+
+This concludes my **Java Internship at CORELIA**. Over 8 weeks, I have built:
+
+1. **Console Apps** (Task Manager, Pet Clinic)  
+2. **RESTful APIs** (Student Management, Library & Book/Author System)  
+3. **JSF Web Apps** (Registration Form, Employee Directory, Attendance Tracker)  
+4. **Final Capstone Project** (Task Management System with JSF + Spring Boot + MySQL)
+
+---
+
+### ✨ Key Learnings
+- Full-stack Java development using JSF and Spring Boot  
+- Database integration with MySQL and JPA/Hibernate  
+- Creating interactive dashboards and reports  
+- Implementing CRUD operations and server-side validation  
+- Handling user authentication, sessions, and roles  
+- Building responsive, user-friendly web interfaces  
 
 ---
 
