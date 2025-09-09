@@ -68,17 +68,12 @@ public class AuthenticationBean {
            e.printStackTrace();
        }
    }
-//   public String logout() {
-//       SecurityContextHolder.clearContext();
-//       FacesContext.getCurrentInstance().getExternalContext()
-//           .invalidateSession();
-//       return "login.xhtml?faces-redirect=true";
-//   }
+
    
    public void logout() throws IOException {
 	    FacesContext facesContext = FacesContext.getCurrentInstance();
 	    facesContext.getExternalContext().invalidateSession();
-	    facesContext.getExternalContext().redirect("login.xhtml"); // redirect مباشر
+	    facesContext.getExternalContext().redirect("login.xhtml"); 
 	}
 
    public void setUsername(String username) { this.username = username; }

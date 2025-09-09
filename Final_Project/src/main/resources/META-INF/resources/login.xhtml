@@ -20,15 +20,17 @@
         <h2 class="text-center mb-4">Login</h2>
         <h:form prependId="false">
             <div class="mb-3 position-relative">
+            <i class="fa fa-user position-absolute" style="right: 10px; top: 12px;"></i>
                 <h:inputText id="username" value="#{authenticationBean.username}" required="true"
                              styleClass="form-control" placeholder="Username"/>
-                <i class="fa fa-user position-absolute" style="right: 10px; top: 12px;"></i>
+               
             </div>
 
             <div class="mb-3 position-relative">
+            <i class="fa fa-lock position-absolute" style="right: 10px; top: 12px;"></i>
                 <h:inputSecret id="password" value="#{authenticationBean.password}" required="true"
                                styleClass="form-control" placeholder="Password"/>
-                <i class="fa fa-lock position-absolute" style="right: 10px; top: 12px;"></i>
+                
             </div>
 
             <h:commandButton value="Login" action="/login"
