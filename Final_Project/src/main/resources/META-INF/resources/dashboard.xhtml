@@ -8,42 +8,68 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeicons@6.0.1/primeicons.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
         
         <style>
-        .task-card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background: #fff;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-}
+            body, html {
+                height: 100%;
+                margin: 0;
+            }
 
-.task-info {
-    flex: 1;
-}
+            .layout-container {
+                display: flex;
+                height: 100vh; /* الشاشة كلها */
+                overflow: hidden; /* منع الـscroll العام */
+            }
 
-.task-actions i {
-    font-size: 1.2rem;
-    cursor: pointer;
-}
-.width-control{
-    max-width: 1000px;
-    margin: 0 auto;
-    text-align: center;
-}
-  
+            .sidebar {
+                width: 220px;
+                background-color: #212529;
+                color: #fff;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .content {
+                flex-grow: 1;
+                overflow-y: auto;
+                padding: 1.5rem;
+                background-color: #f8f9fa;
+            }
+
+            .task-card {
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                background: #fff;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            }
+
+            .task-info {
+                flex: 1;
+            }
+
+            .task-actions i {
+                font-size: 1.2rem;
+                cursor: pointer;
+            }
+
+            .width-control {
+                max-width: 1000px;
+                margin: 0 auto;
+                text-align: center;
+            }
         </style>
     </h:head>
 
     <h:body>
-        <div class="d-flex vh-100">
-
+        <div class="layout-container">
+            
             <!-- Sidebar -->
-            <ui:include src="#{authenticationBean.isAdmin ? '/includes/adminSidebar.xhtml' : '/includes/userSidebar.xhtml'}" />
-
+            <div class="sidebar">
+                <ui:include src="#{authenticationBean.isAdmin ? '/includes/adminSidebar.xhtml' : '/includes/userSidebar.xhtml'}" />
+            </div>
 
             <!-- Main Content -->
-            <div class="flex-grow-1 p-4 content">
+            <div class="content">
                 <ui:insert name="content"/>
             </div>
 

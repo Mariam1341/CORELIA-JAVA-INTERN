@@ -27,16 +27,22 @@ public class AuthenticationBean {
 	    private String email;
 	    
 	    private boolean isAdmin;
+	    
+	      
 
 
 	    @Autowired
 	    private UserService userService;
 	    
+	    public boolean getIsLoggedIn() {
+	        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	        return auth != null && auth.isAuthenticated() && !(auth instanceof AnonymousAuthenticationToken);
+	    }
 	    
 	    public String getUsername() {
 	        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	        if (auth != null && auth.isAuthenticated() && !(auth instanceof AnonymousAuthenticationToken)) {
-	            return auth.getName(); 
+	        if (getIsLoggedIn()) {
+	            return auth.getName();
 	        }
 	        return "";
 	    }
@@ -45,29 +51,29 @@ public class AuthenticationBean {
 			this.isAdmin = isAdmin;
 		}
 
-		public boolean getIsAdmin() {
+	    public boolean getIsAdmin() {
 	        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	        
-	        return auth.getAuthorities().stream()
-	                   .anyMatch(r -> r.getAuthority().equals("ADMIN"));
+	        return getIsLoggedIn() && auth.getAuthorities().stream()
+	                .anyMatch(r -> r.getAuthority().equals("ADMIN"));
+	    }
+	    public void register() {
+	        try {
+	            userService.addUser(username, email, password);
+
+	            FacesContext.getCurrentInstance().addMessage(null,
+	                new FacesMessage(FacesMessage.SEVERITY_INFO, 
+	                                 "Success", "Registration successful! Please login."));
+	            FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
+
+	        } catch (RuntimeException e) {
+	            // هنا هيظهر notification للمستخدم
+	            FacesContext.getCurrentInstance().addMessage(null,
+	                new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", e.getMessage()));
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
 	    }
 
-   public void register() {
-       try {
-           userService.addUser(username, email, password);
-           FacesContext.getCurrentInstance().addMessage(null,
-               new FacesMessage(FacesMessage.SEVERITY_INFO, 
-                                "Success", "Registration successful! Please login."));
-           FacesContext.getCurrentInstance().getExternalContext()
-                       .redirect("login.xhtml");
-       } catch (RuntimeException e) {
-           FacesContext.getCurrentInstance().addMessage(null,
-               new FacesMessage(FacesMessage.SEVERITY_ERROR,
-                                "Error", e.getMessage()));
-       } catch (IOException e) {
-           e.printStackTrace();
-       }
-   }
 
    
    public void logout() throws IOException {
@@ -76,7 +82,11 @@ public class AuthenticationBean {
 	    facesContext.getExternalContext().redirect("login.xhtml"); 
 	}
 
-   public void setUsername(String username) { this.username = username; }
+   public String getEmail() {return email;}
+
+public void setEmail(String email) {this.email = email;}
+
+public void setUsername(String username) { this.username = username; }
    public String getPassword() { return password; }
    public void setPassword(String password) { this.password = password; }
 }

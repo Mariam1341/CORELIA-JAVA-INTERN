@@ -5,58 +5,70 @@
                 xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="content">
-    <div class="width-control">
-        <h2 class="text-center mb-4" style="color:#4CAF50;">Reports</h2>
+        <div class="width-control">
+            <h2 class="text-center mb-4" style="color:#4CAF50;">Admin Reports</h2>
 
-        <div class="row">
-            <!-- Pie Chart: Tasks by Status -->
-            <div class="col-md-6">
-                <h4 class="mb-3">Tasks by Status</h4>
-                <p:chart type="pie" model="#{reportBean.taskStatusModel}" style="width:100%;height:300px;" />
+            <div class="row g-4">
+                <!-- Pie Chart: Tasks by Status -->
+                <div class="col-md-6">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h4 class="card-title mb-3">Tasks by Status</h4>
+                            <p:chart type="pie" model="#{reportBean.taskStatusModel}" style="width:100%;height:300px;" />
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Bar Chart: Tasks by User -->
+                <div class="col-md-6">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h4 class="card-title mb-3">Tasks by User</h4>
+                            <p:chart type="bar" model="#{reportBean.taskByUserModel}" style="width:100%;height:300px;" />
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- Bar Chart: Tasks by User -->
-            <div class="col-md-6">
-                <h4 class="mb-3">Tasks by User</h4>
-                <p:chart type="bar" model="#{reportBean.taskByUserModel}" style="width:100%;height:300px;" />
+            <!-- Tasks Table -->
+            <div class="mt-5">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h4 class="card-title mb-3">All Tasks Table</h4>
+                        <h:form id="reportForm">
+                            <p:dataTable value="#{reportBean.allTasks}" var="task"
+                                         styleClass="table table-hover"
+                                         responsiveLayout="scroll"
+                                        
+                                         sortBy="#{task.status}">
+                                
+                                <p:column headerText="Task Name" sortBy="#{task.title}">
+                                    <h:outputText value="#{task.title}" />
+                                </p:column>
 
+                                <p:column headerText="User" sortBy="#{task.user.username}">
+                                    <h:outputText value="#{task.user.username}" />
+                                </p:column>
+
+                                <p:column headerText="Status" sortBy="#{task.status}">
+                                    <h:outputText value="#{task.status}"
+                                        styleClass="#{
+                                            task.status eq 'TODO' ? 'badge bg-secondary' :
+                                            task.status eq 'IN_PROGRESS' ? 'badge bg-warning' :
+                                            'badge bg-success'
+                                        }" />
+                                </p:column>
+
+                                <p:column headerText="Description">
+                                    <h:outputText value="#{task.description}" />
+                                </p:column>
+
+                               
+                            </p:dataTable>
+                        </h:form>
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <div class="mt-5">
-            <h4 class="mb-3">All Tasks Table</h4>
-            <h:form id="reportForm">
-                <p:dataTable value="#{reportBean.allTasks}" var="task"
-                             styleClass="table table-hover"
-                             responsiveLayout="scroll">
-
-                    <p:column headerText="Task Name" style="width:25%;">
-                        <h:outputText value="#{task.title}" />
-                    </p:column>
-
-                    <p:column headerText="Assigned To" style="width:20%;">
-                        <h:outputText value="#{task.user.username}" />
-                    </p:column>
-
-                    <p:column headerText="Status" style="width:15%;">
-                        <h:outputText value="#{task.status}"
-              styleClass="#{
-                  task.status eq 'TODO' ? 'badge bg-secondary' :
-                  task.status eq 'IN_PROGRESS' ? 'badge bg-warning' :
-                  'badge bg-success'
-              }" />
-
-                    </p:column>
-
-                    <p:column headerText="Description" style="width:40%;">
-                        <h:outputText value="#{task.description}" />
-                    </p:column>
-
-                </p:dataTable>
-            </h:form>
-        </div>
         </div>
     </ui:define>
-
 </ui:composition>

@@ -29,12 +29,52 @@ public class UserBean {
     private UserService userService;
 
     private List<User> allUsers;
+    private String username;
+    private String email;
 
     @PostConstruct
     public void init() {
-        allUsers = userService.getAllUsers();
+    	allUsers = userService.getAllUsers();
+        loadUserData();
     }
 
+    private void loadUserData() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null && auth.isAuthenticated() && !"anonymousUser".equals(auth.getName())) {
+            User user = userService.getUserByUsername(auth.getName());
+            if (user != null) {
+                this.username = user.getUsername();
+                this.email = user.getEmail();
+            }
+        }
+    }
+
+    // ===== Update Email =====
+    public void updateEmail() {
+        try {
+            userService.updateEmail(username, email);
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Success", "Email updated successfully."));
+        } catch (RuntimeException e) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", e.getMessage()));
+        }
+    }
+
+    // ===== Send Reset Password Link =====
+    public void sendPasswordResetLink() {
+        try {
+            userService.sendPasswordResetLink(username);
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Success",
+                            "Password reset link sent to your email."));
+        } catch (RuntimeException e) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", e.getMessage()));
+        }
+    }
+
+   
     public void makeAdmin(String username) {
         userService.updateRole(username, "ADMIN");
         allUsers = userService.getAllUsers(); // refresh table
@@ -51,7 +91,9 @@ public class UserBean {
                              "Deleted", "User " + username + " has been removed."));
     }
 
-    public List<User> getAllUsers() {
-        return allUsers;
-    }
+    // ===== Getters & Setters =====
+    public String getUsername() { return username; }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+public List<User> getAllUsers() {return allUsers;}
 }

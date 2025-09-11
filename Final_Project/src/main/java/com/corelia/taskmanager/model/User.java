@@ -20,7 +20,8 @@ public class User {
     
     private String email;
 
-    private boolean enabled = true;
+    private String resetToken;
+    
 
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -49,13 +50,6 @@ public class User {
 		this.password = password;
 	}
 
-	public boolean isEnabled() {
-		return enabled;
-	}
-
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
-	}
 
 	public Role getRole() {
 		return role;
@@ -64,6 +58,26 @@ public class User {
 	public void setRole(Role role) {
 		this.role = role;
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getResetToken() {
+		return resetToken;
+	}
+
+	public void setResetToken(String resetToken) {
+		this.resetToken = resetToken;
+	}
+
+	
+
+	
 
 	
 
