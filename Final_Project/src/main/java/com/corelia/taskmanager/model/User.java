@@ -22,6 +22,7 @@ public class User {
 
     private String resetToken;
     
+    private boolean enabled;
 
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -73,6 +74,14 @@ public class User {
 
 	public void setResetToken(String resetToken) {
 		this.resetToken = resetToken;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
 	

@@ -2,40 +2,54 @@
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:p="http://primefaces.org/ui">
-                
-                
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
         <h2 class="mb-4 text-center">My Tasks</h2>
 
         <!-- Add New Task -->
-   <!-- Add New Task -->
-<h:form prependId="false" class="mb-4">
-    <div class="card border-light shadow-sm p-3 mb-4">
-        <div class="card-header #{taskBean.selectedTask != null ? 'bg-warning' : 'bg-primary'} text-white">
-            #{taskBean.selectedTask != null ? 'Edit Task' : 'Add New Task'}
-        </div>
-        <div class="card-body">
-            <h:panelGrid columns="1" styleClass="mb-3">
-                <h:outputLabel for="title" value="Task Title:"/>
-                <h:inputText id="title" value="#{taskBean.newTask.title}" styleClass="form-control mb-2"/>
+        <h:form prependId="false" class="mb-4">
+            <div class="card border-light shadow-sm p-3 mb-4">
+                <div class="card-header #{taskBean.selectedTask != null ? 'bg-warning' : 'bg-primary'} text-white">
+                    #{taskBean.selectedTask != null ? 'Edit Task' : 'Add New Task'}
+                </div>
+                <div class="card-body">
+                    <h:panelGrid columns="1" styleClass="mb-3">
+                        <h:outputLabel for="title" value="Task Title:"/>
+                        <h:inputText id="title" value="#{taskBean.newTask.title}" styleClass="form-control mb-2"/>
 
-                <h:outputLabel for="description" value="Task Description:"/>
-                <h:inputTextarea id="description" value="#{taskBean.newTask.description}" styleClass="form-control"/>
-            </h:panelGrid>
+                        <h:outputLabel for="description" value="Task Description:"/>
+                        <h:inputTextarea id="description" value="#{taskBean.newTask.description}" styleClass="form-control mb-2"/>
 
-            <h:commandButton value="#{taskBean.selectedTask != null ? 'Update Task' : 'Add Task'}"
-                             action="#{taskBean.addOrUpdateTask}"
-                             styleClass="btn #{taskBean.selectedTask != null ? 'btn-warning' : 'btn-primary'}"/>
-        </div>
-    </div>
-</h:form>
+                        <!-- Deadline Field -->
+                        
+                        <h:outputLabel for="deadline" value="Deadline:"/>
+<p:calendar id="deadline" value="#{taskBean.newTask.deadline}"
+            pattern="yyyy-MM-dd" showButtonPanel="true" navigator="true"
+            styleClass="form-control"/>
+                         </h:panelGrid>
 
+                    <h:commandButton value="#{taskBean.selectedTask != null ? 'Update Task' : 'Add Task'}"
+                                     action="#{taskBean.addOrUpdateTask}"
+                                     styleClass="btn #{taskBean.selectedTask != null ? 'btn-warning' : 'btn-primary'}"/>
+                </div>
+            </div>
+        </h:form>
 
-
-
+        <!-- Tasks Board + زرار التنبيهات -->
         <h:form prependId="false">
+            <!-- زرار إرسال التنبيهات فوق البورد -->
+            <div class="text-end mb-3">
+            
+               <h:commandButton value="Notify Deadline Tasks"
+                 action="#{taskBean.sendDeadlineNotifications}"
+                 styleClass="btn btn-lg btn-danger shadow-sm">
+    <f:ajax render="@none"/>
+</h:commandButton>
+            </div>
+   
+
             <div class="row">
                 <!-- TODO Column -->
                 <div class="col-md-4">
@@ -49,6 +63,15 @@
     <div class="task-info flex-grow-1">
         <strong>#{task.title}</strong>
         <p class="mb-0 text-muted" style="font-size:0.9rem;">#{task.description}</p>
+        <p class="mb-0" 
+   style="font-size:0.85rem; font-weight:500;
+          color: #{task.deadline lt now ? 'red' : (task.deadline eq tomorrow ? 'orange' : 'gray')}">
+    <i class="fa fa-clock me-1"></i>
+    Due: <h:outputText value="#{task.deadline}">
+            <f:convertDateTime pattern="yyyy-MM-dd" timeZone="GMT+2"/>
+         </h:outputText>
+</p>
+
     </div>
     
     <div class="task-actions d-flex flex-column align-items-center ms-3">
@@ -86,6 +109,14 @@
     <div class="task-info flex-grow-1">
         <strong>#{task.title}</strong>
         <p class="mb-0 text-muted" style="font-size:0.9rem;">#{task.description}</p>
+           <p class="mb-0" 
+   style="font-size:0.85rem; font-weight:500;
+          color: #{task.deadline lt now ? 'red' : (task.deadline eq tomorrow ? 'orange' : 'gray')}">
+    <i class="fa fa-clock me-1"></i>
+    Due: <h:outputText value="#{task.deadline}">
+            <f:convertDateTime pattern="yyyy-MM-dd" timeZone="GMT+2"/>
+         </h:outputText>
+</p>
     </div>
     
     <div class="task-actions d-flex flex-column align-items-center ms-3">
@@ -121,6 +152,14 @@
     <div class="task-info flex-grow-1">
         <strong>#{task.title}</strong>
         <p class="mb-0 text-muted" style="font-size:0.9rem;">#{task.description}</p>
+           <p class="mb-0" 
+   style="font-size:0.85rem; font-weight:500;
+          color: #{task.deadline lt now ? 'red' : (task.deadline eq tomorrow ? 'orange' : 'gray')}">
+    <i class="fa fa-clock me-1"></i>
+    Due: <h:outputText value="#{task.deadline}">
+            <f:convertDateTime pattern="yyyy-MM-dd" timeZone="GMT+2"/>
+         </h:outputText>
+</p>
     </div>
     
     <div class="task-actions d-flex flex-column align-items-center ms-3">
@@ -145,9 +184,7 @@
                 </div>
             </div>
         </h:form>
-
-
     </ui:define>
-
 </ui:composition>
+
 

@@ -2,6 +2,7 @@ package com.corelia.taskmanager.service;
 
 import com.corelia.taskmanager.model.Role;
 import com.corelia.taskmanager.model.User;
+import com.corelia.taskmanager.repository.TaskRepository;
 import com.corelia.taskmanager.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,6 +26,11 @@ public class UserService {
 	
 	@Autowired
 	private  PasswordEncoder passwordEncoder;
+	
+	@Autowired
+	private TaskRepository taskRepository;
+
+	
 	   @Autowired
 	    private JavaMailSender mailSender;
     
@@ -115,9 +122,11 @@ public class UserService {
        userRepository.save(user);
    }
 
+   @Transactional
    public void deleteUser(String username) {
        User user = userRepository.findByUsername(username)
            .orElseThrow(() -> new RuntimeException("User not found"));
+       taskRepository.deleteAllByUser(user);
        userRepository.delete(user);
    }
 

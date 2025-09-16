@@ -5,6 +5,7 @@ import com.corelia.taskmanager.model.Task;
 import com.corelia.taskmanager.model.Status;
 import com.corelia.taskmanager.model.User;
 import com.corelia.taskmanager.security.CustomUserDetails;
+import com.corelia.taskmanager.service.NotificationService;
 import com.corelia.taskmanager.service.TaskService;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
@@ -14,8 +15,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
@@ -30,10 +37,16 @@ public class TaskBean implements Serializable {
     @Autowired
     private TaskService taskService;
     
+    @Autowired
+    private NotificationService notificationService;
     
 
     @Inject
     private AuthenticationBean authBean;
+    
+    
+    
+    
     
     private List<Task> todoTasks;
     private List<Task> inProgressTasks;
@@ -51,6 +64,36 @@ public class TaskBean implements Serializable {
 
 
 
+    // ✅ تنسيق التاريخ للعرض
+    public String formatDeadline(Task task) {
+        if (task.getDeadline() == null) return "";
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(task.getDeadline());
+    }
+    // ✅ هل متأخر؟
+    public boolean isOverdue(Task task) {
+        if (task.getDeadline() == null) return false;
+        LocalDate today = LocalDate.now();
+        LocalDate deadlineLocal = task.getDeadline().toInstant()
+                                      .atZone(ZoneId.systemDefault())
+                                      .toLocalDate();
+        return deadlineLocal.isBefore(today);
+    }
+
+    public boolean isDueTomorrow(Task task) {
+        if (task.getDeadline() == null) return false;
+        LocalDate tomorrow = LocalDate.now().plusDays(1);
+        LocalDate deadlineLocal = task.getDeadline().toInstant()
+                                      .atZone(ZoneId.systemDefault())
+                                      .toLocalDate();
+        return deadlineLocal.isEqual(tomorrow);
+    }
+
+
+	public void sendDeadlineNotifications() {
+		notificationService.sendDeadlineReminders();
+	}
+
     public void loadTasks() {
         tasks = taskService.getTasksForUser(authBean.getUsername());
     }
@@ -65,6 +108,7 @@ public class TaskBean implements Serializable {
         taskService.advanceStatus(task);
         loadTasks();
     }
+    
     // Delete
     public void deleteTask(Task task) {
     	taskService.deleteTask(task);
@@ -101,13 +145,15 @@ public class TaskBean implements Serializable {
 
 
 
+
 	public void setDoneTasks(List<Task> doneTasks) {
 		this.doneTasks = doneTasks;
 	}
     public void prepareEdit(Task task) {
         this.selectedTask = task;
-        this.newTask = task; // خلي الفورم يظهر بيانات المهمة
-    }
+        this.newTask = task; 
+        }
+    
     public void addOrUpdateTask() {
         if (selectedTask != null) {
             taskService.updateTask(selectedTask);

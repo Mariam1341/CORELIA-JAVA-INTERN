@@ -34,14 +34,28 @@
             <div class="mt-5">
                 <div class="card shadow-sm">
                     <div class="card-body">
-                        <h4 class="card-title mb-3">All Tasks Table</h4>
+                        <h4 class="card-title mb-3 d-flex justify-content-between align-items-center">
+                            All Tasks Table
+                        </h4>
+
+                        <!-- خلي كل حاجة جوه form -->
                         <h:form id="reportForm">
+
+                            <!-- أزرار Export -->
+                            <div class="btn-group mb-3">
+                                <p:commandButton value="PDF" icon="pi pi-file-pdf" styleClass="ui-button-danger"
+                                                 ajax="false" actionListener="#{reportBean.downloadPDF}" />
+                             
+                                <p:commandButton value="CSV" icon="pi pi-file" styleClass="ui-button-secondary"
+                                                 ajax="false" actionListener="#{reportBean.downloadCsv}" />
+                            </div>
+
+                            <!-- جدول المهام -->
                             <p:dataTable value="#{reportBean.allTasks}" var="task"
                                          styleClass="table table-hover"
                                          responsiveLayout="scroll"
-                                        
                                          sortBy="#{task.status}">
-                                
+
                                 <p:column headerText="Task Name" sortBy="#{task.title}">
                                     <h:outputText value="#{task.title}" />
                                 </p:column>
@@ -52,18 +66,17 @@
 
                                 <p:column headerText="Status" sortBy="#{task.status}">
                                     <h:outputText value="#{task.status}"
-                                        styleClass="#{
-                                            task.status eq 'TODO' ? 'badge bg-secondary' :
-                                            task.status eq 'IN_PROGRESS' ? 'badge bg-warning' :
-                                            'badge bg-success'
-                                        }" />
+                                                  styleClass="#{
+                                                      task.status eq 'TODO' ? 'badge bg-secondary' :
+                                                      task.status eq 'IN_PROGRESS' ? 'badge bg-warning' :
+                                                      'badge bg-success'
+                                                  }" />
                                 </p:column>
 
                                 <p:column headerText="Description">
                                     <h:outputText value="#{task.description}" />
                                 </p:column>
 
-                               
                             </p:dataTable>
                         </h:form>
                     </div>

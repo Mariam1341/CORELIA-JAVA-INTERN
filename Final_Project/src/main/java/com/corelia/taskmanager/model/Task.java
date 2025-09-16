@@ -1,7 +1,10 @@
 package com.corelia.taskmanager.model;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 @Entity
 @Table(name = "tasks")
@@ -21,8 +24,14 @@ public class Task {
 
     @ManyToOne
     private User user;
-
     
+    @Temporal(TemporalType.DATE)
+    private Date deadline;
+
+
+
+
+
     public boolean isDone() {
     	return this.status == Status.DONE;
     }
@@ -68,6 +77,16 @@ public class Task {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	public Date getDeadline() {
+		return deadline;
+	}
+
+	public void setDeadline(Date deadline) {
+		this.deadline = deadline;
+	}
+
+	
 
 	
 
